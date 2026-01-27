@@ -35,13 +35,21 @@
 #include <kernel/dpl/DebugP.h>
 #include <kernel/dpl/ClockP.h>
 #include <kernel/dpl/TimerP.h>
+#include <string.h>
 #include "printf.h"
+
+#define DebugP_SHM_LOG_WRITER_LINE_BUF_SIZE (256u)
 
 static DebugP_ShmLog *gDebugShmLogWriter = NULL;
 static const char *gDebugShmLogWriterSelfCoreName = "unknown";
 static uint8_t gDebugShmLogWriterPreludeEnabled = 0;
 
-void DebugP_shmLogWriterPutLine(const uint8_t *buf, uint16_t num_bytes);
+static uint8_t  lineBuf[DebugP_SHM_LOG_WRITER_LINE_BUF_SIZE + sizeof("\r\n")]; // +3 to terminate with \r\n\0
+static uint32_t lineBufIndex = 0;
+
+static void DebugP_shmLogWriterPutLine(const uint8_t *buf, uint16_t num_bytes);
+
+static const char* msgOverflowStr = "<message overflow>\r\n";
 
 void DebugP_shmLogWriterInit(DebugP_ShmLog *shmLog, uint16_t selfCoreId)
 {
@@ -116,7 +124,6 @@ void DebugP_shmLogWriterPutLine(const uint8_t *buf, uint16_t num_bytes)
 
 void DebugP_shmLogWriterPutChar(char character)
 {
-#define DebugP_SHM_LOG_WRITER_LINE_BUF_SIZE (120u)
 static uint8_t lineBuf[DebugP_SHM_LOG_WRITER_LINE_BUF_SIZE+UNSIGNED_INTEGERVAL_TWO]; /* +2 to add \r\n char at end of string in worst case */
 static uint32_t lineBufIndex = 0;
 
@@ -156,6 +163,31 @@ static uint32_t lineBufIndex = 0;
     }
 }
 
+
+int DebugP_shmLogWriterPutBuf(const char* buf, uint16_t num_bytes)
+{
+    if(lineBufIndex==0U && gDebugShmLogWriterPreludeEnabled)
+    {
+        uint64_t curTime = ClockP_getTimeUsec();
+
+        lineBufIndex = snprintf_((char*)lineBuf, DebugP_SHM_LOG_WRITER_LINE_BUF_SIZE, "[%6s] %5d.%06ds : ",
+                            gDebugShmLogWriterSelfCoreName,
+                            (uint32_t)(curTime/TIME_IN_MICRO_SECONDS),
+                            (uint32_t)(curTime%TIME_IN_MICRO_SECONDS)
+                            );
+    }
+    // Check byte count post prelude insertion
+    if ((sizeof(lineBuf) - lineBufIndex) < num_bytes) {
+        buf       = msgOverflowStr;
+        num_bytes = strlen(msgOverflowStr);
+    }
+
+    memcpy((char*)lineBuf + lineBufIndex, (char*)buf, num_bytes);
+    lineBufIndex += num_bytes;
+    DebugP_shmLogWriterPutLine(lineBuf, (uint16_t)lineBufIndex);
+    lineBufIndex = 0;
+    return 0;
+}
 
 void DebugP_shmLogWriterPreludeEnable(){
     gDebugShmLogWriterPreludeEnabled = 1;

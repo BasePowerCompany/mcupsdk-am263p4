@@ -329,7 +329,16 @@ void DebugP_shmLogWriterPreludeDisable();
  */
 void DebugP_shmLogWriterPutChar(char character);
 
-
+/**
+ * \brief Write a buffer to shared memory log. The contents of the buffer cannot be longer than
+ * DebugP_SHM_LOG_WRITER_LINE_BUF_SIZE.
+ *
+ * \param buf [in] buffer to write
+ * \param num_bytes [in] number of bytes to write
+ *
+ * \return 0
+ */
+int DebugP_shmLogWriterPutBuf(const char* buf, uint16_t num_bytes);
 /**
  * \brief Write a character to UART terminal
  *
