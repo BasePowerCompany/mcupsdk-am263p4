@@ -1,0 +1,2141 @@
+******************************************************************************
+            TI ARM Clang Linker Unix v4.0.4                    
+******************************************************************************
+>> Linked Fri Dec 26 20:54:58 2025
+
+OUTPUT FILE NAME:   <sbl_jtag_uniflash.release.out>
+ENTRY POINT SYMBOL: "_vectors"  address: 70002000
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  R5F_VECS              00000000   00000100  00000000  00000100  RWIX
+  R5F_TCMA              00000100   00007f00  00000000  00007f00  RWIX
+  R5F_TCMB0             00080000   00008000  00000000  00008000  RWIX
+  MSRAM_VECS            70002000   00000100  00000040  000000c0  RWIX
+  MSRAM_0               70002100   0003df00  00027250  00016cb0  RWIX
+  MSRAM_1               700c0000   001c0000  001c0000  00000000  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+70002000    70002000    00000040   00000040    r-x
+  70002000    70002000    00000040   00000040    r-x .sbl_init_code
+70002100    70002100    0000e1a0   0000e1a0    r-x
+  70002100    70002100    0000cfc0   0000cfc0    r-x .text
+  7000f0c0    7000f0c0    00000990   00000990    r-x .text.hwi
+  7000fa50    7000fa50    00000430   00000430    r-x .text.cache
+  7000fe80    7000fe80    00000290   00000290    r-x .text.mpu
+  70010110    70010110    00000190   00000190    r-x .text.boot
+700102a0    700102a0    00000858   00000858    rw-
+  700102a0    700102a0    00000858   00000858    rw- .data
+70010b00    70010b00    00001250   00001250    r--
+  70010b00    70010b00    00001250   00001250    r-- .rodata
+70011d80    70011d80    00017600   00000000    rw-
+  70011d80    70011d80    00009300   00000000    rw- .bss
+  7001b080    7001b080    00008000   00000000    rw- .sysmem
+  70023080    70023080    00004000   00000000    rw- .stack
+  70027080    70027080    00001000   00000000    rw- .irqstack
+  70028080    70028080    00000100   00000000    rw- .fiqstack
+  70028180    70028180    00001000   00000000    rw- .svcstack
+  70029180    70029180    00000100   00000000    rw- .abortstack
+  70029280    70029280    00000100   00000000    rw- .undefinedstack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.sbl_init_code 
+*          0    70002000    00000040     
+                  70002000    00000040     nortos.am263px.r5f.ti-arm-clang.release.lib : HwiP_armv7r_vectors_nortos_asm.obj (.vectors)
+
+.text      0    70002100    0000cfc0     
+                  70002100    000006ea     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_phy_am26x_lld.obj (.text.OSPI_lld_phyFindOTP1)
+                  700027ea    00000002     nortos.am263px.r5f.ti-arm-clang.release.lib : SemaphoreP_nortos.obj (.text.SemaphoreP_destruct)
+                  700027ec    0000060e     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiOpen)
+                  70002dfa    00000002     nortos.am263px.r5f.ti-arm-clang.release.lib : TaskP_nortos.obj (.text.TaskP_yield)
+                  70002dfc    00000580                                                 : printf.obj (.text._vsnprintf)
+                  7000337c    000004cc     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : soc_rcm.obj (.text.SOC_rcmEnablePeripheralClock)
+                  70003848    00000444                                                         : i2c_v1_lld.obj (.text.I2C_lld_primeTransferPoll)
+                  70003c8c    00000004     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.text.ClockP_getTimerCount)
+                  70003c90    00000400                                                 : printf.obj (.text._ftoa)
+                  70004090    00000010     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : bootloader_uniflash_rprc.obj (.text.Bootloader_Uniflash_RPRC_flashVerifyXIPFile)
+                  700040a0    00000390     libc.a : strcmp32.S.obj (.text:strcmp)
+                  70004430    00000342     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_setQeBit)
+                  70004772    00000006     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_isInterruptEnabled)
+                  70004778    00000310     nortos.am263px.r5f.ti-arm-clang.release.lib : printf.obj (.text._etoa)
+                  70004a88    000002a0     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0.obj (.text.UART_open)
+                  70004d28    0000028c     main.obj (.text.sbl_jtag_uniflash_load_file)
+                  70004fb4    0000027c     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_init)
+                  70005230    0000026c     libc.a : fgets.c.obj (.text._dofgets)
+                  7000549c    00000264     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : soc_rcm.obj (.text.SOC_rcmSetPeripheralClock)
+                  70005700    0000023c                                                         : ospi_v0.obj (.text.OSPI_open)
+                  7000593c    0000023c                                                         : uart_v0_lld.obj (.text.UART_configInstance)
+                  70005b78    0000020c                                                         : i2c_v1.obj (.text.I2C_open)
+                  70005d84    00000204                                                         : edma.obj (.text.EDMA_freeChannelRegion)
+                  70005f88    000001f8     libc.a : strtol.c.obj (.text.strtol)
+                  70006180    000001f0     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_errorIsrFxn)
+                  70006370    000001e4                                                         : ospi_edma_lld.obj (.text.OSPI_dmaCopy)
+                  70006554    000001d0     libclang_rt.builtins.a : udivsi3.S.obj (.text.__udivsi3)
+                  70006724    000001c0     libc.a : fopen.c.obj (.text._openfile)
+                  700068e4    000001ae     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1_lld.obj (.text.I2C_lld_controllerIsr)
+                  70006a92    00000002                                                         : uart_dma_edma.obj (.text.UART_edmaDoNothing)
+                  70006a94    000001a8     libc.a : memory.c.obj (.text.free)
+                  70006c3c    000001a4            : memory.c.obj (.text.aligned_alloc)
+                  70006de0    00000194     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_dma_edma.obj (.text.UART_lld_dmaInit)
+                  70006f74    00000190                                                         : ospi_v0_lld.obj (.text.OSPI_programInstance)
+                  70007104    00000180                                                         : i2c_v1.obj (.text.I2C_transfer)
+                  70007284    00000168                                                         : i2c_v1_lld.obj (.text.I2C_lld_targetIsr)
+                  700073ec    00000164                                                         : edma.obj (.text.EDMA_open)
+                  70007550    00000150                                                         : ospi_edma_lld.obj (.text.OSPI_dmaOpen)
+                  700076a0    0000014e                                                         : uart_dma_edma.obj (.text.UART_lld_dmaDeInit)
+                  700077ee    00000002     nortos.am263px.r5f.ti-arm-clang.release.lib : printf.obj (.text._out_null)
+                  700077f0    0000014c     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : bootloader_uniflash.obj (.text.Bootloader_uniflashProcessFlashCommands)
+                  7000793c    0000014a                                                         : uart_v0_lld.obj (.text.UART_lld_controllerIsr)
+                  70007a86    00000002     --HOLE-- [fill = 0]
+                  70007a88    00000144     libc.a : setvbuf.c.obj (.text.setvbuf)
+                  70007bcc    00000140     nortos.am263px.r5f.ti-arm-clang.release.lib : TimerP_rti_priv.obj (.text.TimerP_setupPriv)
+                  70007d0c    0000013c     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : soc.obj (.text.SOC_virtToPhy)
+                  70007e48    00000138                                                         : uart_v0.obj (.text.UART_close)
+                  70007f80    00000138     libsysbm.a : open.c.obj (.text.open)
+                  700080b8    00000132     nortos.am263px.r5f.ti-arm-clang.release.lib : printf.obj (.text._ntoa_format)
+                  700081ea    00000002     --HOLE-- [fill = 0]
+                  700081ec    00000124     main.obj (.text.main)
+                  70008310    0000011e     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiReset)
+                  7000842e    00000002     --HOLE-- [fill = 0]
+                  70008430    00000118     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.Alloc_resource)
+                  70008548    00000118     libclang_rt.builtins.a : udivmoddi4.S.obj (.text)
+                  70008660    00000114     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : soc_rcm.obj (.text.SOC_rcmGetPeripheralClockFrequency)
+                  70008774    0000010e                                                         : ospi_v0_lld.obj (.text.OSPI_lld_isr)
+                  70008882    0000010e                                                         : uart_v0_lld.obj (.text.UART_lld_write)
+                  70008990    00000108                                                         : edma.obj (.text.EDMA_transferCompletionMasterIsrFxn)
+                  70008a98    00000104     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.text.ClockP_init)
+                  70008b9c    00000104     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_dma_edma.obj (.text.UART_lld_dmaWrite)
+                  70008ca0    00000102     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiPhyTune)
+                  70008da2    00000002     --HOLE-- [fill = 0]
+                  70008da4    000000fc     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0.obj (.text.UART_write)
+                  70008ea0    000000f8                                                         : ospi_v0_lld.obj (.text.OSPI_lld_readCmd)
+                  70008f98    000000f8                                                         : ospi_v0_lld.obj (.text.OSPI_lld_writeIndirect)
+                  70009090    000000f6                                                         : ospi_v0_lld.obj (.text.OSPI_lld_readDirectDma)
+                  70009186    000000f2     board.am263px.r5f.ti-arm-clang.nortos.release.lib : eeprom_cat24m.obj (.text.EEPROM_CAT24M_write)
+                  70009278    000000f2     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : bootloader_uniflash_mcelf.obj (.text.MCELF_flashVerifyXIPFile)
+                  7000936a    00000002     --HOLE-- [fill = 0]
+                  7000936c    000000f0     libc.a : fputc.c.obj (.text.fputc)
+                  7000945c    000000ec     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.text.OSPI_lld_setProtocol)
+                  70009548    000000e8     libc.a : _bufread.c.obj (.text.__TI_buff_read)
+                  70009630    000000e6     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.text.I2C_primeTransfer)
+                  70009716    000000de                                                         : ospi_v0_lld.obj (.text.OSPI_lld_writeCmd)
+                  700097f4    000000d8                                                         : bootloader_uniflash_rprc.obj (.text.Bootloader_uniflashFlashOrVerifyXipFile)
+                  700098cc    000000d6     middleware.am263px.r5f.ti-arm-clang.nortos.release.lib : tielfup32.obj (.text.ELFUP_update)
+                  700099a2    00000002     --HOLE-- [fill = 0]
+                  700099a4    000000d0     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_unregisterIntr)
+                  70009a74    000000ce     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiWaitReady)
+                  70009b42    00000002     --HOLE-- [fill = 0]
+                  70009b44    000000cc     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0_lld.obj (.text.UART_lld_initDma)
+                  70009c10    000000c8     libc.a : getdevice.c.obj (.text.getdevice)
+                  70009cd8    000000c6     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiWrite)
+                  70009d9e    000000c6                                                       : flash_nor_ospi.obj (.text.Flash_setOeBit)
+                  70009e64    000000c4                                                       : flash_nor_ospi.obj (.text.Flash_norOspiReadId)
+                  70009f28    000000c4     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1_lld.obj (.text.I2C_lld_mem_write)
+                  70009fec    000000c4                                                         : i2c_v1_lld.obj (.text.I2C_lld_primeTransferIntr)
+                  7000a0b0    000000c4                                                         : uart_v0_lld.obj (.text.UART_lld_init)
+                  7000a174    000000c0                                                         : i2c_v1_lld.obj (.text.I2C_lld_mem_read)
+                  7000a234    000000c0     board.am263px.r5f.ti-arm-clang.nortos.release.lib : ioexp_tca6416.obj (.text.TCA6416_setOutput)
+                  7000a2f4    000000be                                                       : ioexp_tca6416.obj (.text.TCA6416_config)
+                  7000a3b2    000000be                                                       : ioexp_tca6424.obj (.text.TCA6424_config)
+                  7000a470    000000be                                                       : ioexp_tca6424.obj (.text.TCA6424_setOutput)
+                  7000a52e    00000002     --HOLE-- [fill = 0]
+                  7000a530    000000bc     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_registerIntr)
+                  7000a5ec    000000b6     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiErase)
+                  7000a6a2    000000b6                                                       : flash_nor_ospi.obj (.text.Flash_norOspiEraseSector)
+                  7000a758    000000b4     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : bootloader_uniflash_common.obj (.text.Bootloader_uniflashFlashFile)
+                  7000a80c    000000b4     libc.a : fseek.c.obj (.text.fseeko)
+                  7000a8c0    000000b4            : ftell.c.obj (.text.ftello)
+                  7000a974    000000b0            : fclose.c.obj (.text.__TI_closefile)
+                  7000aa24    000000b0     nortos.am263px.r5f.ti-arm-clang.release.lib : printf.obj (.text._ntoa_long_long)
+                  7000aad4    000000ac     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : soc_rcm.obj (.text.SOC_rcmGetCoreHSDivOut)
+                  7000ab80    000000ac                                                         : uart_v0_lld.obj (.text.UART_divisorLatchWrite)
+                  7000ac2c    000000a8                                                         : bootloader_uniflash_common.obj (.text.Bootloader_uniflashFlashErase)
+                  7000acd4    000000a6     nortos.am263px.r5f.ti-arm-clang.release.lib : printf.obj (.text._out_rev)
+                  7000ad7a    00000002     --HOLE-- [fill = 0]
+                  7000ad7c    000000a4     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1_lld.obj (.text.I2C_lld_mem_readIntr)
+                  7000ae20    000000a4                                                         : i2c_v1_lld.obj (.text.I2C_lld_mem_writeIntr)
+                  7000aec4    000000a4                                                         : ospi_v0_lld.obj (.text.OSPI_lld_initDma)
+                  7000af68    000000a4     libc.a : memory.c.obj (.text.split)
+                  7000b00c    000000a0     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_freeDmaChannel)
+                  7000b0ac    000000a0                                                         : edma.obj (.text.EDMA_freeParam)
+                  7000b14c    000000a0                                                         : edma.obj (.text.EDMA_freeTcc)
+                  7000b1ec    000000a0     libsysbm.a : hostrename.c.obj (.text.HOSTrename)
+                  7000b28c    000000a0     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.text.I2C_close)
+                  7000b32c    000000a0                                                         : uart_dma_edma.obj (.text.UART_lld_dmaRead)
+                  7000b3cc    000000a0     ti_board_config.obj (.text.board_flash_reset)
+                  7000b46c    0000009e     nortos.am263px.r5f.ti-arm-clang.release.lib : SemaphoreP_nortos.obj (.text.SemaphoreP_pend)
+                  7000b50a    00000002     --HOLE-- [fill = 0]
+                  7000b50c    0000009c     libc.a : _io_perm.c.obj (.text.__TI_wrt_ok)
+                  7000b5a8    00000098     libsysbm.a : hostlseek.c.obj (.text.HOSTlseek)
+                  7000b640    00000094     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_configureChannelRegion)
+                  7000b6d4    00000094     libsysbm.a : hostopen.c.obj (.text.HOSTopen)
+                  7000b768    00000094     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1_lld.obj (.text.I2C_lld_init)
+                  7000b7fc    00000094                                                         : ospi_v0_lld.obj (.text.OSPI_flashExecCmd)
+                  7000b890    0000008e     nortos.am263px.r5f.ti-arm-clang.release.lib : printf.obj (.text._ntoa_long)
+                  7000b91e    0000008c     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : bootloader_uniflash_common.obj (.text.Bootloader_uniflashFlashVerifyFile)
+                  7000b9aa    00000002     --HOLE-- [fill = 0]
+                  7000b9ac    0000008c                                                         : ospi_v0_lld.obj (.text.OSPI_lld_init)
+                  7000ba38    0000008c     libsysbm.a : close.c.obj (.text.close)
+                  7000bac4    0000008a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_edma_lld.obj (.text.OSPI_dmaClose)
+                  7000bb4e    00000002     --HOLE-- [fill = 0]
+                  7000bb50    00000088                                                         : uart_v0.obj (.text.UART_init)
+                  7000bbd8    00000088     libc.a : fflush.c.obj (.text.__TI_doflush)
+                  7000bc60    00000084     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : bootloader_uniflash_common.obj (.text.Bootloader_uniflashFlashFileSector)
+                  7000bce4    00000084     libsysbm.a : hostread.c.obj (.text.HOSTread)
+                  7000bd68    00000084                : hostwrite.c.obj (.text.HOSTwrite)
+                  7000bdec    00000080     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_close)
+                  7000be6c    00000080     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiRegWrite)
+                  7000beec    00000080     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0.obj (.text.OSPI_readDirect)
+                  7000bf6c    00000080                                                         : uart_v0.obj (.text.UART_flushTxFifo)
+                  7000bfec    00000080     libc.a : fopen.c.obj (.text._search_fp)
+                  7000c06c    0000007c     ti_drivers_open_close.obj (.text.Drivers_i2cOpen)
+                  7000c0e8    00000078     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0.obj (.text.OSPI_init)
+                  7000c160    00000078     libc.a : _io_perm.c.obj (.text.__TI_rd_ok)
+                  7000c1d8    00000072     board.am263px.r5f.ti-arm-clang.nortos.release.lib : eeprom_cat24m.obj (.text.EEPROM_CAT24M_read)
+                  7000c24a    00000072     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1_lld.obj (.text.I2C_lld_targetTransferIntr)
+                  7000c2bc    00000070     ti_board_open_close.obj (.text.Board_flashOpen)
+                  7000c32c    00000070     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash.obj (.text.Flash_offsetToSectorPage)
+                  7000c39c    0000006e     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_disableTransferRegion)
+                  7000c40a    0000006e                                                         : edma.obj (.text.EDMA_enableTransferRegion)
+                  7000c478    0000006c     ti_drivers_open_close.obj (.text.Drivers_close)
+                  7000c4e4    0000006c     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash.obj (.text.Flash_offsetToBlkPage)
+                  7000c550    0000006c     libsysbm.a : hostunlink.c.obj (.text.HOSTunlink)
+                  7000c5bc    0000006c     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_phy_am26x_lld.obj (.text.OSPI_lld_phyResyncDLL)
+                  7000c628    0000006c                                                         : uart_v0_lld.obj (.text.UART_lld_writeDma)
+                  7000c694    0000006a     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiSetModeDummy)
+                  7000c6fe    00000068                                                       : flash_nor_ospi.obj (.text.Flash_norOspiSetRegCfg)
+                  7000c766    00000068     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0_lld.obj (.text.UART_lld_writeIntr)
+                  7000c7ce    00000066     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiRegRead)
+                  7000c834    00000064     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : soc.obj (.text.SOC_controlModuleUnlockMMR)
+                  7000c898    00000064                                                         : uart_v0_lld.obj (.text.UART_procLineStatusErr)
+                  7000c8fc    00000060     libsysbm.a : hostclose.c.obj (.text.HOSTclose)
+                  7000c95c    00000060     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_phy_am26x_lld.obj (.text.OSPI_lld_phyBasicConfig)
+                  7000c9bc    0000005e     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_timerTickIsr)
+                  7000ca1a    0000005e     ti_board_config.obj (.text.TCA6424_Flash_reset)
+                  7000ca78    0000005c     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : soc.obj (.text.SOC_controlModuleLockMMR)
+                  7000cad4    0000005c     nortos.am263px.r5f.ti-arm-clang.release.lib : DebugP_log.obj (.text._DebugP_assert)
+                  7000cb30    0000005a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.text.OSPI_lld_setXferOpCodes)
+                  7000cb8a    00000058     ti_board_open_close.obj (.text.Board_eepromOpen)
+                  7000cbe2    00000058     ti_board_config.obj (.text.TCA6416_Flash_reset)
+                  7000cc3a    00000002     --HOLE-- [fill = 0]
+                  7000cc3c    00000058     libc.a : fopen.c.obj (.text.__TI_cleanup)
+                  7000cc94    00000058     libsysbm.a : trgmsg.c.obj (.text.__TI_readmsg)
+                  7000ccec    00000058                : trgmsg.c.obj (.text.__TI_writemsg)
+                  7000cd44    00000056     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_getTimeUsec)
+                  7000cd9a    00000056     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0_lld.obj (.text.UART_intrDisable)
+                  7000cdf0    00000056                                                         : uart_v0_lld.obj (.text.UART_writeCancelNoCB)
+                  7000ce46    00000054     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiRead)
+                  7000ce9a    00000002     --HOLE-- [fill = 0]
+                  7000ce9c    00000054     libc.a : exit.c.obj (.text.exit)
+                  7000cef0    00000054            : getdevice.c.obj (.text.finddevice)
+                  7000cf44    00000054            : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
+                  7000cf98    00000052     nortos.am263px.r5f.ti-arm-clang.release.lib : AddrTranslateP_32bit.obj (.text.AddrTranslateP_getLocalAddr)
+                  7000cfea    00000052     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : bootloader_uniflash_common.obj (.text.Bootloader_uniflashFlashPhyTuningData)
+                  7000d03c    00000052                                                         : ospi_v0_lld.obj (.text.OSPI_lld_flashMemcpy)
+                  7000d08e    00000052     main.obj (.text.sbl_jtag_uniflash_erase_all)
+                  7000d0e0    00000050     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_allocDmaChannel)
+                  7000d130    00000050                                                         : edma.obj (.text.EDMA_allocParam)
+                  7000d180    00000050                                                         : edma.obj (.text.EDMA_allocTcc)
+                  7000d1d0    0000004e     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_addToList)
+                  7000d21e    0000004e     ti_drivers_open_close.obj (.text.Drivers_uartOpen)
+                  7000d26c    0000004e     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_disableChInShadowRegRegion)
+                  7000d2ba    0000004e     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiSetRdDataCaptureDelay)
+                  7000d308    0000004c     ti_drivers_open_close.obj (.text.Drivers_edmaOpen)
+                  7000d354    0000004c     ti_drivers_open_close.obj (.text.Drivers_ospiOpen)
+                  7000d3a0    0000004c     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.text.I2C_LLD_targetTransferCompleteCallback)
+                  7000d3ec    0000004c                                                         : ospi_v0.obj (.text.OSPI_close)
+                  7000d438    0000004c                                                         : ospi_v0_lld.obj (.text.OSPI_lld_deInit)
+                  7000d484    0000004c     libc.a : fclose.c.obj (.text.fclose)
+                  7000d4d0    0000004c            : fopen.c.obj (.text.fopen)
+                  7000d51c    00000048     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.text.OSPI_lld_deInitDma)
+                  7000d564    00000048                                                         : ospi_phy_am26x_lld.obj (.text.OSPI_lld_phyFindTxHigh)
+                  7000d5ac    00000048                                                         : ospi_phy_am26x_lld.obj (.text.OSPI_lld_phyFindTxLow)
+                  7000d5f4    00000048                                                         : uart_dma_edma.obj (.text.UART_edmaIsrRx)
+                  7000d63c    00000048     libsysbm.a : unlink.c.obj (.text.unlink)
+                  7000d684    00000046     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_phy_am26x_lld.obj (.text.OSPI_lld_phyFindRxHigh)
+                  7000d6ca    00000046                                                         : ospi_phy_am26x_lld.obj (.text.OSPI_lld_phyFindRxLow)
+                  7000d710    00000046                                                         : ospi_phy_am26x_lld.obj (.text.OSPI_lld_phySetRdDelayTxRxDLL)
+                  7000d756    00000046                                                         : uart_dma_edma.obj (.text.UART_edmaIsrTx)
+                  7000d79c    00000044                                                         : ospi_v0.obj (.text.OSPI_writeIndirect)
+                  7000d7e0    00000044                                                         : uart_v0.obj (.text.UART_Params_init)
+                  7000d824    00000044                                                         : uart_v0_lld.obj (.text.UART_lld_deInitDma)
+                  7000d868    00000042     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_quirkSpansionUNHYSADisable)
+                  7000d8aa    00000042     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.text.OSPI_lld_enablePhy)
+                  7000d8ec    00000040     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_stop)
+                  7000d92c    00000040     ti_dpl_config.obj (.text.Dpl_init)
+                  7000d96c    00000040     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_mapChToEvtQ)
+                  7000d9ac    00000040                                                         : ospi_phy_am26x_lld.obj (.text.OSPI_lld_phyReadAttackVector)
+                  7000d9ec    00000040                                                         : pinmux.obj (.text.Pinmux_config)
+                  7000da2c    00000040                                                         : uart_v0_lld.obj (.text.UART_lld_deInit)
+                  7000da6c    00000040     libc.a : memory.c.obj (.text.free_list_insert)
+                  7000daac    0000003e     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1_lld.obj (.text.I2C_lld_transferInit)
+                  7000daea    00000002     --HOLE-- [fill = 0]
+                  7000daec    0000003c                                                         : edma.obj (.text.EDMA_getBaseAddr)
+                  7000db28    0000003c                                                         : ospi_phy_am26x_lld.obj (.text.OSPI_lld_phyTuneDDR)
+                  7000db64    0000003c                                                         : uart_v0_lld.obj (.text.UART_readData)
+                  7000dba0    0000003a     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_destruct)
+                  7000dbda    0000003a                                                 : DebugP_uartLogWriter.obj (.text.DebugP_uartLogWriterPutChar)
+                  7000dc14    0000003a     board.am263px.r5f.ti-arm-clang.nortos.release.lib : eeprom.obj (.text.EEPROM_open)
+                  7000dc4e    0000003a                                                       : flash.obj (.text.Flash_open)
+                  7000dc88    0000003a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.text.I2C_completeCurrTransfer)
+                  7000dcc2    0000003a     ti_power_clock_config.obj (.text.Module_clockSetFrequency)
+                  7000dcfc    0000003a     board.am263px.r5f.ti-arm-clang.nortos.release.lib : ioexp_tca6416.obj (.text.TCA6416_open)
+                  7000dd36    0000003a                                                       : ioexp_tca6424.obj (.text.TCA6424_open)
+                  7000dd70    0000003a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0_lld.obj (.text.UART_lld_flushTxFifo)
+                  7000ddaa    00000002     --HOLE-- [fill = 0]
+                  7000ddac    00000038                                                         : soc_rcm.obj (.text.SOC_rcmADPLLJGetFOut)
+                  7000dde4    00000038     nortos.am263px.r5f.ti-arm-clang.release.lib : DebugP_nortos.obj (.text._DebugP_logZone)
+                  7000de1c    00000036     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_clrMissEvtRegion)
+                  7000de52    00000036     nortos.am263px.r5f.ti-arm-clang.release.lib : SemaphoreP_nortos.obj (.text.SemaphoreP_post)
+                  7000de88    00000034                                                 : ClockP_nortos.obj (.text.ClockP_start)
+                  7000debc    00000034     board.am263px.r5f.ti-arm-clang.nortos.release.lib : eeprom_cat24m.obj (.text.EEPROM_CAT24M_open)
+                  7000def0    00000034     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.text.I2C_init)
+                  7000df24    00000034     ti_power_clock_config.obj (.text.Module_clockEnable)
+                  7000df58    00000034     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.text.OSPI_lld_disablePhy)
+                  7000df8c    00000034                                                         : ospi_v0_lld.obj (.text.OSPI_lld_readDirect)
+                  7000dfc0    00000034                                                         : soc_rcm.obj (.text.SOC_rcmGetModuleClkDivVal)
+                  7000dff4    00000034     libc.a : memory.c.obj (.text.free_list_remove)
+                  7000e028    00000034     libsysbm.a : lseek.c.obj (.text.lseek)
+                  7000e05c    00000034                : read.c.obj (.text.read)
+                  7000e090    00000034                : write.c.obj (.text.write)
+                  7000e0c4    00000032     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_usleep)
+                  7000e0f6    00000032     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_unmapChToEvtQ)
+                  7000e128    00000030                                                         : i2c_v1_lld.obj (.text.I2CControllerInitExpClk)
+                  7000e158    00000030                                                         : ospi_v0_lld.obj (.text.OSPI_utilLog2)
+                  7000e188    00000030                                                         : uart_v0.obj (.text.UART_lld_readCompleteCallback)
+                  7000e1b8    00000030                                                         : uart_v0.obj (.text.UART_lld_writeCompleteCallback)
+                  7000e1e8    0000002e                                                         : edma.obj (.text.EDMA_enableChInShadowRegRegion)
+                  7000e216    0000002e                                                         : i2c_v1_lld.obj (.text.I2C_lld_deInit)
+                  7000e244    0000002c     ti_board_open_close.obj (.text.Board_driversClose)
+                  7000e270    0000002c     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_getHandle)
+                  7000e29c    0000002c                                                         : i2c_v1.obj (.text.I2C_getHandle)
+                  7000e2c8    0000002c                                                         : uart_v0.obj (.text.UART_getHandle)
+                  7000e2f4    0000002a     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash.obj (.text.Flash_read)
+                  7000e31e    0000002a                                                       : flash.obj (.text.Flash_write)
+                  7000e348    00000028     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_construct)
+                  7000e370    00000028                                                 : ClockP_nortos.obj (.text.ClockP_sleepTicks)
+                  7000e398    00000028     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0.obj (.text.OSPI_getHandle)
+                  7000e3c0    00000028                                                         : soc.obj (.text.SOC_moduleSetClockFrequency)
+                  7000e3e8    00000026                                                         : edma.obj (.text.EDMA_setPaRAM)
+                  7000e40e    00000026                                                         : i2c_v1_lld.obj (.text.I2C_lld_transferIntr)
+                  7000e434    00000026                                                         : i2c_v1_lld.obj (.text.I2C_lld_transferPoll)
+                  7000e45a    00000026                                                         : uart_dma_edma.obj (.text.UART_lld_dmaDisableChannel)
+                  7000e480    00000026     main.obj (.text.flashFixUpOspiBoot)
+                  7000e4a6    00000024     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_clrIntrRegion)
+                  7000e4ca    00000024                                                         : edma.obj (.text.EDMA_disableEvtIntrRegion)
+                  7000e4ee    00000024                                                         : edma.obj (.text.EDMA_readIntrStatusRegion)
+                  7000e512    00000024     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash.obj (.text.Flash_getAttrs)
+                  7000e536    00000024                                                       : flash.obj (.text.Flash_getHandle)
+                  7000e55a    00000024     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.text.OSPI_lld_enableDacMode)
+                  7000e57e    00000002     --HOLE-- [fill = 0]
+                  7000e580    00000024                                                         : uart_v0_lld.obj (.text.UART_IsHWFlowCtrlValid)
+                  7000e5a4    00000024     libclang_rt.builtins.a : aeabi_uldivmod.S.obj (.text.__aeabi_uldivmod)
+                  7000e5c8    00000024     nortos.am263px.r5f.ti-arm-clang.release.lib : printf.obj (.text.vprintf_)
+                  7000e5ec    00000022     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_linkChannel)
+                  7000e60e    00000022     board.am263px.r5f.ti-arm-clang.nortos.release.lib : eeprom_cat24m.obj (.text.EEPROM_CAT24M_close)
+                  7000e630    00000022     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.text.OSPI_lld_configBaudrate)
+                  7000e652    00000022                                                         : ospi_v0_lld.obj (.text.OSPI_lld_setDeviceSize)
+                  7000e674    00000022                                                         : ospi_v0_lld.obj (.text.OSPI_writeFifoData)
+                  7000e696    00000022     ti_drivers_config.obj (.text.System_init)
+                  7000e6b8    00000020     nortos.am263px.r5f.ti-arm-clang.release.lib : DebugP_log.obj (.text.DebugP_logZoneEnable)
+                  7000e6d8    00000020     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_chainChannel)
+                  7000e6f8    00000020                                                         : i2c_v1_lld.obj (.text.I2C_lld_Message_init)
+                  7000e718    00000020                                                         : ospi_v0_lld.obj (.text.OSPI_lld_readCmdParams_init)
+                  7000e738    00000020                                                         : ospi_v0_lld.obj (.text.OSPI_lld_writeCmdParams_init)
+                  7000e758    00000020                                                         : ospi_v0.obj (.text.OSPI_readCmd)
+                  7000e778    00000020                                                         : ospi_v0.obj (.text.OSPI_writeCmd)
+                  7000e798    00000020     nortos.am263px.r5f.ti-arm-clang.release.lib : TimerP_rti_priv.obj (.text.TimerP_Params_initPriv)
+                  7000e7b8    00000020     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0_lld.obj (.text.UART_getChar)
+                  7000e7d8    0000001e     board.am263px.r5f.ti-arm-clang.nortos.release.lib : eeprom.obj (.text.EEPROM_read)
+                  7000e7f6    0000001e     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.text.OSPI_lld_readBaudRateDivFromReg)
+                  7000e814    0000001e                                                         : ospi_v0_lld.obj (.text.OSPI_readFifoData)
+                  7000e832    0000001e                                                         : ospi_v0_lld.obj (.text.OSPI_waitWriteSRAMLevel)
+                  7000e850    0000001e     board.am263px.r5f.ti-arm-clang.nortos.release.lib : ioexp_tca6416.obj (.text.TCA6416_close)
+                  7000e86e    0000001e                                                       : ioexp_tca6424.obj (.text.TCA6424_close)
+                  7000e88c    0000001e     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0_lld.obj (.text.UART_spaceAvail)
+                  7000e8aa    0000001c                                                         : ospi_v0_lld.obj (.text.OSPI_lld_disableDacMode)
+                  7000e8c6    0000001c                                                         : ospi_v0_lld.obj (.text.OSPI_lld_setNumAddrBytes)
+                  7000e8e2    00000002     --HOLE-- [fill = 0]
+                  7000e8e4    0000001c                                                         : soc_rcm.obj (.text.SOC_rcmIsR5FInLockStepMode)
+                  7000e900    0000001c     libsysbm.a : hostrename.c.obj (.text.strcpy)
+                  7000e91c    0000001c                : hostrename.c.obj (.text.strlen)
+                  7000e938    0000001c     libc.a : memcpy32.S.obj (.text:TI_memcpy_small)
+                  7000e954    0000001a     nortos.am263px.r5f.ti-arm-clang.release.lib : CpuId_armv7r.obj (.text.CSL_armR5GetCpuID)
+                  7000e96e    0000001a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_readEventStatusRegion)
+                  7000e988    0000001a     middleware.am263px.r5f.ti-arm-clang.nortos.release.lib : tielfup32.obj (.text.ELFUP_init)
+                  7000e9a2    0000001a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.text.I2C_hwiFxn)
+                  7000e9bc    0000001a                                                         : ospi_edma_lld.obj (.text.OSPI_EdmaParams_init)
+                  7000e9d6    0000001a                                                         : ospi_edma_lld.obj (.text.OSPI_edmaIsrFxn)
+                  7000e9f0    0000001a                                                         : ospi_v0_lld.obj (.text.OSPI_lld_setRdDataCaptureDelay)
+                  7000ea0a    0000001a                                                         : uart_v0_lld.obj (.text.UART_enhanFuncEnable)
+                  7000ea24    00000018     ti_board_open_close.obj (.text.Board_eepromClose)
+                  7000ea3c    00000018     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiClose)
+                  7000ea54    00000018     nortos.am263px.r5f.ti-arm-clang.release.lib : TimerP_rti_priv.obj (.text.TimerP_getCountPriv)
+                  7000ea6c    00000018     libc.a : memset32.S.obj (.text:TI_memset_small)
+                  7000ea84    00000016     ti_board_open_close.obj (.text.Board_driversOpen)
+                  7000ea9a    00000016     ti_drivers_open_close.obj (.text.Drivers_open)
+                  7000eab0    00000016     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1_lld.obj (.text.I2C_lld_Transaction_init)
+                  7000eac6    00000016                                                         : ospi_v0_lld.obj (.text.OSPI_getCmdExt)
+                  7000eadc    00000016                                                         : ospi_v0_lld.obj (.text.OSPI_lld_Transaction_init)
+                  7000eaf2    00000016                                                         : ospi_v0_lld.obj (.text.OSPI_lld_disablePhyPipeline)
+                  7000eb08    00000016                                                         : ospi_v0_lld.obj (.text.OSPI_lld_enableSDR)
+                  7000eb1e    00000016                                                         : ospi_v0_lld.obj (.text.OSPI_lld_setResetPinStatus)
+                  7000eb34    00000016     nortos.am263px.r5f.ti-arm-clang.release.lib : SemaphoreP_nortos.obj (.text.SemaphoreP_constructBinary)
+                  7000eb4a    00000016     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0_lld.obj (.text.UART_IsTxRxFifoEmpty)
+                  7000eb60    00000016                                                         : uart_v0_lld.obj (.text.UART_checkCharsAvailInFifo)
+                  7000eb76    00000016                                                         : uart_v0_lld.obj (.text.UART_getIntrIdentityStatus)
+                  7000eb8c    00000014     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_usecToTicks)
+                  7000eba0    00000014     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.text.EDMA_getRegionId)
+                  7000ebb4    00000014     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash.obj (.text.Flash_eraseSector)
+                  7000ebc8    00000014     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.text.OSPI_lld_setCmdDummyCycles)
+                  7000ebdc    00000014     nortos.am263px.r5f.ti-arm-clang.release.lib : SemaphoreP_nortos.obj (.text.SemaphoreP_constructMutex)
+                  7000ebf0    00000014     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0.obj (.text.UART_Transaction_init)
+                  7000ec04    00000014                                                         : uart_v0_lld.obj (.text.UART_enhanFuncBitValRestore)
+                  7000ec18    00000014     libc.a : fgets.c.obj (.text.gets)
+                  7000ec2c    00000012     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash.obj (.text.Flash_eraseBlk)
+                  7000ec3e    00000012     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.text.I2C_LLD_transferCompleteCallback)
+                  7000ec50    00000012                                                         : ospi_v0_lld.obj (.text.OSPI_lld_enableModeBitsCmd)
+                  7000ec62    00000012                                                         : uart_v0_lld.obj (.text.UART_hardwareFlowCtrlOptSet)
+                  7000ec74    00000012                                                         : uart_v0_lld.obj (.text.UART_operatingModeSelect)
+                  7000ec86    00000012                                                         : uart_v0_lld.obj (.text.UART_readLineStatus)
+                  7000ec98    00000012     ti_dpl_config.obj (.text.putchar_)
+                  7000ecaa    00000010     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.text.Flash_norOspiDacModeDisable)
+                  7000ecba    00000010                                                       : flash_nor_ospi.obj (.text.Flash_norOspiDacModeEnable)
+                  7000ecca    00000010     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0.obj (.text.OSPI_configBaudrate)
+                  7000ecda    00000010                                                         : ospi_v0.obj (.text.OSPI_disableDacMode)
+                  7000ecea    00000010                                                         : ospi_v0.obj (.text.OSPI_disablePhy)
+                  7000ecfa    00000010                                                         : ospi_v0.obj (.text.OSPI_enableDacMode)
+                  7000ed0a    00000010                                                         : ospi_v0.obj (.text.OSPI_enablePhy)
+                  7000ed1a    00000010                                                         : ospi_v0.obj (.text.OSPI_enableSDR)
+                  7000ed2a    00000010                                                         : ospi_v0.obj (.text.OSPI_getBaudRateDivFromObj)
+                  7000ed3a    00000002     --HOLE-- [fill = 0]
+                  7000ed3c    00000010                                                         : ospi_phy_am26x_lld.obj (.text.OSPI_lld_phyGetTuningData)
+                  7000ed4c    00000010                                                         : ospi_v0_lld.obj (.text.OSPI_lld_setReadDummyCycles)
+                  7000ed5c    00000010                                                         : ospi_v0.obj (.text.OSPI_setRdDataCaptureDelay)
+                  7000ed6c    00000010                                                         : ospi_v0.obj (.text.OSPI_setResetPinStatus)
+                  7000ed7c    00000010                                                         : uart_v0_lld.obj (.text.UART_intr2Disable)
+                  7000ed8c    00000010     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memset)
+                  7000ed9c    00000010     libc.a : fputc.c.obj (.text.putchar)
+                  7000edac    0000000e     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : bootloader_uniflash_mcelf.obj (.text.Bootloader_Uniflash_MCELF_flashVerifyXIPFile)
+                  7000edba    0000000e                                                         : bootloader_uniflash_mcelf.obj (.text.Bootloader_Uniflash_MCELF_flashXIPFile)
+                  7000edc8    0000000e                                                         : edma.obj (.text.EDMA_ccPaRAMEntry_init)
+                  7000edd6    0000000e     board.am263px.r5f.ti-arm-clang.nortos.release.lib : eeprom.obj (.text.EEPROM_close)
+                  7000ede4    0000000e                                                       : flash.obj (.text.Flash_close)
+                  7000edf2    0000000e                                                       : flash.obj (.text.Flash_getPhyTuningOffset)
+                  7000ee00    0000000e     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.text.I2C_transferCallback)
+                  7000ee0e    0000000e                                                         : ospi_v0.obj (.text.OSPI_isDacEnable)
+                  7000ee1c    0000000e                                                         : ospi_v0.obj (.text.OSPI_isPhyEnable)
+                  7000ee2a    0000000e                                                         : ospi_v0_lld.obj (.text.OSPI_lld_clearDualOpCodeMode)
+                  7000ee38    0000000e                                                         : ospi_v0_lld.obj (.text.OSPI_lld_enableModeBitsRead)
+                  7000ee46    0000000e                                                         : ospi_v0_lld.obj (.text.OSPI_lld_setModeBits)
+                  7000ee54    0000000e                                                         : ospi_phy_am26x.obj (.text.OSPI_phyReadAttackVector)
+                  7000ee62    0000000e                                                         : ospi_phy_am26x.obj (.text.OSPI_phyTuneDDR)
+                  7000ee70    0000000e     ti_pinmux_config.obj (.text.Pinmux_init)
+                  7000ee7e    0000000e     ti_power_clock_config.obj (.text.PowerClock_init)
+                  7000ee8c    0000000c     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_getTicks)
+                  7000ee98    0000000c                                                 : DebugP_uartLogWriter.obj (.text.DebugP_uartSetDrvIndex)
+                  7000eea4    0000000c     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.text.I2C_Transaction_init)
+                  7000eeb0    0000000c                                                         : ospi_v0.obj (.text.OSPI_clearDualOpCodeMode)
+                  7000eebc    0000000c                                                         : ospi_v0.obj (.text.OSPI_enableModeBitsCmd)
+                  7000eec8    0000000c                                                         : ospi_v0.obj (.text.OSPI_enableModeBitsRead)
+                  7000eed4    0000000c                                                         : ospi_v0_lld.obj (.text.OSPI_lld_getFlashDataBaseAddr)
+                  7000eee0    0000000c                                                         : ospi_v0.obj (.text.OSPI_setCmdDummyCycles)
+                  7000eeec    0000000c                                                         : ospi_v0.obj (.text.OSPI_setCmdExtType)
+                  7000eef8    0000000c                                                         : ospi_v0.obj (.text.OSPI_setDeviceSize)
+                  7000ef04    0000000c                                                         : ospi_v0.obj (.text.OSPI_setModeBits)
+                  7000ef10    0000000c                                                         : ospi_v0.obj (.text.OSPI_setNumAddrBytes)
+                  7000ef1c    0000000c                                                         : ospi_v0.obj (.text.OSPI_setPhyEnableSuccess)
+                  7000ef28    0000000c                                                         : ospi_v0.obj (.text.OSPI_setProtocol)
+                  7000ef34    0000000c                                                         : ospi_v0.obj (.text.OSPI_setReadDummyCycles)
+                  7000ef40    0000000c                                                         : ospi_v0.obj (.text.OSPI_setXferOpCodes)
+                  7000ef4c    0000000c     board.am263px.r5f.ti-arm-clang.nortos.release.lib : ioexp_tca6416.obj (.text.TCA6416_Params_init)
+                  7000ef58    0000000c                                                       : ioexp_tca6424.obj (.text.TCA6424_Params_init)
+                  7000ef64    0000000c     libc.a : aeabi_portable.c.obj (.text.__aeabi_errno_addr)
+                  7000ef70    0000000c     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
+                  7000ef7c    0000000c     libc.a : memory.c.obj (.text.malloc)
+                  7000ef88    0000000c     nortos.am263px.r5f.ti-arm-clang.release.lib : CpuId_armv7r_asm.obj (.text)
+                  7000ef94    0000000a                                                 : ClockP_nortos.obj (.text.ClockP_Params_init)
+                  7000ef9e    00000002     --HOLE-- [fill = 0]
+                  7000efa0    0000000c     libc.a : strcmp32.S.obj (.text)
+                  7000efac    0000000a     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_isActive)
+                  7000efb6    0000000a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0.obj (.text.OSPI_dmaInterruptCallback)
+                  7000efc0    0000000a                                                         : ospi_v0.obj (.text.OSPI_interruptCallback)
+                  7000efca    0000000a     nortos.am263px.r5f.ti-arm-clang.release.lib : TimerP_rti_priv.obj (.text.TimerP_getReloadCountPriv)
+                  7000efd4    0000000a                                                 : TimerP_rti_priv.obj (.text.TimerP_startPriv)
+                  7000efde    0000000a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0_lld.obj (.text.UART_lld_Transaction_deInit)
+                  7000efe8    00000008                                                         : bootloader_uniflash_rprc.obj (.text.Bootloader_Uniflash_RPRC_flashXIPFile)
+                  7000eff0    00000008     libsysbm.a : hostexit.c.obj (.text.HOSTexit)
+                  7000eff8    00000008     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0.obj (.text.OSPI_ReadCmdParams_init)
+                  7000f000    00000008                                                         : ospi_v0.obj (.text.OSPI_Transaction_init)
+                  7000f008    00000008                                                         : ospi_v0.obj (.text.OSPI_WriteCmdParams_init)
+                  7000f010    00000008                                                         : ospi_edma_lld.obj (.text.OSPI_isDmaInterruptEnabled)
+                  7000f018    00000008                                                         : ospi_v0_lld.obj (.text.OSPI_lld_readCompleteCallback)
+                  7000f020    00000008     nortos.am263px.r5f.ti-arm-clang.release.lib : TimerP_rti_priv.obj (.text.TimerP_clearOverflowIntPriv)
+                  7000f028    00000008                                                 : printf.obj (.text._out_char)
+                  7000f030    00000008     libc.a : exit.c.obj (.text:abort)
+                  7000f038    00000006     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.text.OSPI_lld_isDacEnable)
+                  7000f03e    00000006                                                         : ospi_v0_lld.obj (.text.OSPI_lld_isPhyEnable)
+                  7000f044    00000006                                                         : ospi_v0_lld.obj (.text.OSPI_lld_setCmdExtType)
+                  7000f04a    00000006                                                         : ospi_v0_lld.obj (.text.OSPI_lld_setPhyEnableSuccess)
+                  7000f050    00000006                                                         : soc.obj (.text.SOC_moduleClockEnable)
+                  7000f056    00000004     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.text.ClockP_timerClearOverflowInt)
+                  7000f05a    00000004     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_phy_am26x.obj (.text.OSPI_phyGetTuningData)
+                  7000f05e    00000004     nortos.am263px.r5f.ti-arm-clang.release.lib : TimerP_rti_nortos.obj (.text.TimerP_Params_init)
+                  7000f062    00000004                                                 : TimerP_rti_nortos.obj (.text.TimerP_clearOverflowInt)
+                  7000f066    00000004                                                 : TimerP_rti_nortos.obj (.text.TimerP_getCount)
+                  7000f06a    00000004                                                 : TimerP_rti_nortos.obj (.text.TimerP_getReloadCount)
+                  7000f06e    00000004                                                 : TimerP_rti_nortos.obj (.text.TimerP_setup)
+                  7000f072    00000004                                                 : TimerP_rti_nortos.obj (.text.TimerP_start)
+                  7000f076    00000002     --HOLE-- [fill = 0]
+                  7000f078    00000004     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_idiv0)
+                  7000f07c    00000004                            : aeabi_div0.c.obj (.text.__aeabi_ldiv0)
+                  7000f080    00000004                            : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  7000f084    00000004     libc.a : _lock.c.obj (.text._nop)
+                  7000f088    00000004            : fseek.c.obj (.text.fseek)
+                  7000f08c    00000004            : ftell.c.obj (.text.ftell)
+                  7000f090    00000004     libsysbm.a : remove.c.obj (.text.remove)
+                  7000f094    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.tramp.__aeabi_memcpy.1)
+                  7000f09c    00000008     nortos.am263px.r5f.ti-arm-clang.release.lib : HwiP_armv7r_asm.obj (.tramp.HwiP_enable.1)
+                  7000f0a4    00000008                                                 : HwiP_armv7r_asm.obj (.tramp.HwiP_restore.1)
+                  7000f0ac    00000014     --HOLE-- [fill = 0]
+
+.text.hwi 
+*          0    7000f0c0    00000990     
+                  7000f0c0    000004a2     nortos.am263px.r5f.ti-arm-clang.release.lib : HwiP_armv7r_vim.obj (.text.hwi)
+                  7000f562    000002f4                                                 : HwiP_armv7r_handlers_nortos.obj (.text.hwi)
+                  7000f856    00000002     --HOLE-- [fill = 0]
+                  7000f858    0000017c                                                 : HwiP_armv7r_handlers_nortos_asm.obj (.text.hwi)
+                  7000f9d4    00000070                                                 : HwiP_armv7r_asm.obj (.text.hwi)
+                  7000fa44    00000008                                                 : HwiP_armv7r_asm.obj (.tramp.HwiP_enableFIQ.1)
+                  7000fa4c    00000004     --HOLE-- [fill = 0]
+
+.text.cache 
+*          0    7000fa50    00000430     
+                  7000fa50    00000340     nortos.am263px.r5f.ti-arm-clang.release.lib : CacheP_armv7r_asm.obj (.text.cache)
+                  7000fd90    000000d8                                                 : CacheP_armv7r.obj (.text.cache)
+                  7000fe68    00000008                                                 : CacheP_armv7r_asm.obj (.tramp.CacheP_invL1d.1)
+                  7000fe70    00000008                                                 : CacheP_armv7r_asm.obj (.tramp.CacheP_enableL1p.1)
+                  7000fe78    00000008                                                 : HwiP_armv7r_asm.obj (.tramp.HwiP_restore.2)
+
+.text.mpu 
+*          0    7000fe80    00000290     
+                  7000fe80    00000202     nortos.am263px.r5f.ti-arm-clang.release.lib : MpuP_armv7r.obj (.text.mpu)
+                  70010082    00000002     --HOLE-- [fill = 0]
+                  70010084    00000078                                                 : MpuP_armv7r_asm.obj (.text.mpu)
+                  700100fc    00000008                                                 : HwiP_armv7r_asm.obj (.tramp.HwiP_restore.3)
+                  70010104    00000008                                                 : MpuP_armv7r_asm.obj (.tramp.MpuP_isEnableAsm.1)
+                  7001010c    00000004     --HOLE-- [fill = 0]
+
+.text.boot 
+*          0    70010110    00000190     
+                  70010110    00000144     nortos.am263px.r5f.ti-arm-clang.release.lib : boot_armv7r_asm.obj (.text.boot)
+                  70010254    0000001e                                                 : DebugP_log.obj (.text.boot)
+                  70010272    0000001c                                                 : boot_armv7r.obj (.text.boot)
+                  7001028e    0000000e     ti_dpl_config.obj (.text.boot)
+                  7001029c    00000004     --HOLE-- [fill = 0]
+
+.data      0    700102a0    00000858     
+                  700102a0    0000011e     main.obj (.data.gMainMenu)
+                  700103be    00000001     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : soc.obj (.data.isMapAvailable)
+                  700103bf    00000001     --HOLE-- [fill = 0]
+                  700103c0    000000f0     libc.a : defs.c.obj (.data._ftable)
+                  700104b0    000000a4     ti_drivers_config.obj (.data.gOspiAttrs)
+                  70010554    00000098     ti_pinmux_config.obj (.data.gPinMuxMainDomainCfg)
+                  700105ec    00000088     ti_drivers_config.obj (.data.gEdmaAttrs)
+                  70010674    00000084     ti_board_open_close.obj (.data.gFlashDevCfg_IS25LX256)
+                  700106f8    00000080     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_phy_am26x_lld.obj (.data.gOspiFlashAttackVector)
+                  70010778    00000078     libsysbm.a : host_device.c.obj (.data._device)
+                  700107f0    00000058     ti_drivers_open_close.obj (.data.gUartParams)
+                  70010848    00000050     libsysbm.a : host_device.c.obj (.data._stream)
+                  70010898    00000038     ti_board_open_close.obj (.data.gFlashAttrs_IS25LX256)
+                  700108d0    00000030     ti_drivers_config.obj (.data.gI2cHwAttrs)
+                  70010900    00000030     ti_power_clock_config.obj (.data.gSocModulesClockFrequency)
+                  70010930    00000028     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.data.gFlashNorOspiFxns)
+                  70010958    00000024                                                       : flash_nor_ospi.obj (.data.gFlashToSpiProtocolMap)
+                  7001097c    0000001c     ti_board_open_close.obj (.data.gFlashConfig)
+                  70010998    00000018     ti_dpl_config.obj (.data.gClockConfig)
+                  700109b0    00000018     ti_drivers_open_close.obj (.data.gI2cParams)
+                  700109c8    00000018     ti_drivers_config.obj (.data.gOspiDmaRestrictRegions)
+                  700109e0    00000014     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.data.gI2cDrvObj)
+                  700109f4    00000014                                                         : ospi_v0.obj (.data.gOspiDrvObj)
+                  70010a08    00000014                                                         : uart_v0.obj (.data.gUartDrvObj)
+                  70010a1c    00000010     board.am263px.r5f.ti-arm-clang.nortos.release.lib : eeprom_cat24m.obj (.data.gEepromFxns_CAT24M)
+                  70010a2c    00000010     ti_drivers_config.obj (.data.gI2cConfig)
+                  70010a3c    00000010     ti_power_clock_config.obj (.data.gSocModules)
+                  70010a4c    00000004     libc.a : defs.c.obj (.data.__TI_ft_end)
+                  70010a50    0000000c     nortos.am263px.r5f.ti-arm-clang.release.lib : AddrTranslateP_32bit.obj (.data.gAddrTranslateConfig)
+                  70010a5c    0000000c     board.am263px.r5f.ti-arm-clang.nortos.release.lib : eeprom_cat24m.obj (.data.gEepromAttrs_CAT24M)
+                  70010a68    0000000c     ti_board_open_close.obj (.data.gEepromConfig)
+                  70010a74    00000008     libc.a : exit.c.obj (.data..L_MergedGlobals)
+                  70010a7c    00000008     ti_drivers_config.obj (.data.gEdmaConfig)
+                  70010a84    00000008     ti_drivers_open_close.obj (.data.gEdmaParams)
+                  70010a8c    00000008     ti_board_open_close.obj (.data.gEepromParams)
+                  70010a94    00000008     ti_board_open_close.obj (.data.gFlashParams)
+                  70010a9c    00000008     ti_drivers_config.obj (.data.gOspiConfig)
+                  70010aa4    00000008     ti_drivers_config.obj (.data.gUartAttrs)
+                  70010aac    00000008     ti_drivers_config.obj (.data.gUartConfig)
+                  70010ab4    00000004     libc.a : aeabi_portable.c.obj (.data.__aeabi_errno)
+                  70010ab8    00000004            : _lock.c.obj (.data._lock)
+                  70010abc    00000004            : _lock.c.obj (.data._unlock)
+                  70010ac0    00000004     nortos.am263px.r5f.ti-arm-clang.release.lib : DebugP_log.obj (.data.gDebugLogZone)
+                  70010ac4    00000004                                                 : DebugP_uartLogWriter.obj (.data.gDebugP_uartDrvIndex)
+                  70010ac8    00000004     ti_drivers_config.obj (.data.gEdmaConfigNum)
+                  70010acc    00000004     ti_board_open_close.obj (.data.gEepromConfigNum)
+                  70010ad0    00000004     ti_board_open_close.obj (.data.gFlashConfigNum)
+                  70010ad4    00000004     ti_dpl_config.obj (.data.gHwiConfig)
+                  70010ad8    00000004     ti_drivers_config.obj (.data.gI2cConfigNum)
+                  70010adc    00000004     ti_drivers_config.obj (.data.gOspiConfigNum)
+                  70010ae0    00000004     ti_drivers_config.obj (.data.gOspiDmaConfig)
+                  70010ae4    00000004     ti_drivers_open_close.obj (.data.gOspiParams)
+                  70010ae8    00000004     ti_drivers_config.obj (.data.gUartConfigNum)
+                  70010aec    00000004     ti_drivers_open_close.obj (.data.gUartDmaChConfig)
+                  70010af0    00000001     libc.a : memory.c.obj (.data.memory_is_initialized)
+                  70010af1    00000003     --HOLE-- [fill = 0]
+                  70010af4    00000001     libsysbm.a : open.c.obj (.data.open.stream_init)
+                  70010af5    00000003     --HOLE-- [fill = 0]
+
+.rodata    0    70010b00    00001250     
+                  70010b00    00000101     libc.a : aeabi_ctype.S.obj (.rodata:__aeabi_ctype_table_)
+                  70010c01    00000003     main.obj (.rodata.str1.15159059442110792349.1)
+                  70010c04    00000064     ti_dpl_config.obj (.rodata.cfg)
+                  70010c68    00000056     main.obj (.rodata.str1.2123964117280943167.1)
+                  70010cbe    00000055     main.obj (.rodata.str1.11870794119293528247.1)
+                  70010d13    00000053     main.obj (.rodata.str1.14112174005742061988.1)
+                  70010d66    00000051     main.obj (.rodata.str1.16265332423659789559.1)
+                  70010db7    00000051     main.obj (.rodata.str1.7702501944640899365.1)
+                  70010e08    00000050     nortos.am263px.r5f.ti-arm-clang.release.lib : printf.obj (.rodata._ftoa.pow10)
+                  70010e58    00000048     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : soc_rcm.obj (.rodata.gADPLLJConfigTbl)
+                  70010ea0    00000046     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.rodata.str1.13779914010620811852.1)
+                  70010ee6    00000041     main.obj (.rodata.str1.16631870348416990953.1)
+                  70010f27    0000003d     nortos.am263px.r5f.ti-arm-clang.release.lib : TimerP_rti_priv.obj (.rodata.str1.11388379688747141303.1)
+                  70010f64    0000003a     main.obj (.rodata.str1.15996357275703397564.1)
+                  70010f9e    00000039     main.obj (.rodata.str1.11702106008850790973.1)
+                  70010fd7    00000038     ti_drivers_open_close.obj (.rodata.str1.871795152488895636.1)
+                  7001100f    00000037     ti_board_open_close.obj (.rodata.str1.12245025114167949655.1)
+                  70011046    00000037     main.obj (.rodata.str1.13288086030101331538.1)
+                  7001107d    00000037     main.obj (.rodata.str1.8154729771448623357.1)
+                  700110b4    00000036     ti_board_open_close.obj (.rodata.str1.6201324418384543622.1)
+                  700110ea    00000035     ti_drivers_open_close.obj (.rodata.str1.10252002122772422448.1)
+                  7001111f    00000035     ti_drivers_open_close.obj (.rodata.str1.2554706296470369595.1)
+                  70011154    00000035     ti_drivers_open_close.obj (.rodata.str1.7750254725308216577.1)
+                  70011189    00000033     main.obj (.rodata.str1.288608917962107522.1)
+                  700111bc    00000032     main.obj (.rodata.str1.9059077390166914652.1)
+                  700111ee    00000031     main.obj (.rodata.str1.2846389346932560359.1)
+                  7001121f    00000030     main.obj (.rodata.str1.7784929982665794503.1)
+                  7001124f    0000002f     main.obj (.rodata.str1.3530083166107438000.1)
+                  7001127e    0000002e     main.obj (.rodata.str1.13782249893155712474.1)
+                  700112ac    0000002e     main.obj (.rodata.str1.17376258722486336754.1)
+                  700112da    0000002d     main.obj (.rodata.str1.10313062130652730376.1)
+                  70011307    0000002d     main.obj (.rodata.str1.18227636981041470289.1)
+                  70011334    00000004     nortos.am263px.r5f.ti-arm-clang.release.lib : CacheP_armv7r.obj (.rodata.gCacheL1dCacheLineSize)
+                  70011338    0000002c     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.rodata.I2C_defaultTransaction)
+                  70011364    0000002b     main.obj (.rodata.str1.10635229749459437609.1)
+                  7001138f    0000002a     nortos.am263px.r5f.ti-arm-clang.release.lib : DebugP_log.obj (.rodata.str1.227947788441500939.1)
+                  700113b9    0000002a     main.obj (.rodata.str1.6891813955777630061.1)
+                  700113e3    0000002a     main.obj (.rodata.str1.8076846746581808073.1)
+                  7001140d    00000029     main.obj (.rodata.str1.18092426736022315238.1)
+                  70011436    00000029     main.obj (.rodata.str1.2763581881760962609.1)
+                  7001145f    00000028     main.obj (.rodata.str1.14402440632258215044.1)
+                  70011487    00000028     main.obj (.rodata.str1.16302215771116645891.1)
+                  700114af    00000028     main.obj (.rodata.str1.8108965883388295311.1)
+                  700114d7    00000027     main.obj (.rodata.str1.12180500075719773345.1)
+                  700114fe    00000027     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.rodata.str1.12743090444791882666.1)
+                  70011525    00000027     main.obj (.rodata.str1.1311392489248731986.1)
+                  7001154c    00000026     main.obj (.rodata.str1.14079361385603432444.1)
+                  70011572    00000024     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.rodata.str1.11535555375892780929.1)
+                  70011596    00000023                                                         : soc_rcm.obj (.rodata.str1.2078190104202520215.1)
+                  700115b9    00000023     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.rodata.str1.7689125538912326484.1)
+                  700115dc    00000022     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.rodata.str1.12976018205622752890.1)
+                  700115fe    00000022     ti_board_config.obj (.rodata.str1.6632415607140922803.1)
+                  70011620    00000021     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.rodata.str1.8559540482768925367.1)
+                  70011641    00000020     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.rodata.cst32)
+                  70011661    00000003     main.obj (.rodata.str1.17100691992556644108.1)
+                  70011664    00000020     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0_lld.obj (.rodata.cst32)
+                  70011684    00000020                                                         : uart_v0.obj (.rodata.str1.16594507886308206351.1)
+                  700116a4    0000001f     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.rodata.str1.2746619892315392655.1)
+                  700116c3    0000001d                                                 : TimerP_rti_priv.obj (.rodata.str1.1727973701797049581.1)
+                  700116e0    0000001d                                                 : TimerP_rti_priv.obj (.rodata.str1.4425773406285945039.1)
+                  700116fd    0000001d     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0.obj (.rodata.str1.4697665093340446018.1)
+                  7001171a    0000001d     nortos.am263px.r5f.ti-arm-clang.release.lib : TimerP_rti_priv.obj (.rodata.str1.7297095892955669843.1)
+                  70011737    0000001d     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0.obj (.rodata.str1.9709051275431913386.1)
+                  70011754    0000001c     ti_board_config.obj (.rodata.str1.1163043902305149133.1)
+                  70011770    0000001b     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.rodata.str1.16672221102796607080.1)
+                  7001178b    0000001b     main.obj (.rodata.str1.8096991282711418442.1)
+                  700117a6    0000001a     main.obj (.rodata.str1.14466178792657420020.1)
+                  700117c0    0000001a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : soc_rcm.obj (.rodata.str1.16907879152045164286.1)
+                  700117da    0000001a     ti_board_config.obj (.rodata.str1.16921083087495105931.1)
+                  700117f4    0000001a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.rodata.str1.2708024660006642838.1)
+                  7001180e    0000001a     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.rodata.str1.3810757863367538396.1)
+                  70011828    0000001a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.rodata.str1.7525109154754115535.1)
+                  70011842    0000001a     main.obj (.rodata.str1.7996925722583989644.1)
+                  7001185c    00000019     nortos.am263px.r5f.ti-arm-clang.release.lib : TimerP_rti_priv.obj (.rodata.str1.5494506574634759136.1)
+                  70011875    00000003     --HOLE-- [fill = 0]
+                  70011878    00000018     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1_lld.obj (.rodata.I2C_lld_defaultMessage)
+                  70011890    00000018                                                         : soc_rcm.obj (.rodata.gControlssPllClkSrcValMap)
+                  700118a8    00000018                                                         : soc_rcm.obj (.rodata.gCptsClkSrcValMap)
+                  700118c0    00000018                                                         : soc_rcm.obj (.rodata.gI2cClkSrcValMap)
+                  700118d8    00000018                                                         : soc_rcm.obj (.rodata.gLinUartClkSrcValMap)
+                  700118f0    00000018                                                         : soc_rcm.obj (.rodata.gPeripheralClkSrcInfoMap)
+                  70011908    00000018                                                         : soc_rcm.obj (.rodata.gRtiClkSrcValMap)
+                  70011920    00000018                                                         : soc_rcm.obj (.rodata.gWdtClkSrcValMap)
+                  70011938    00000018                                                         : i2c_v1.obj (.rodata.str1.16369086400766814308.1)
+                  70011950    00000018                                                         : uart_v0.obj (.rodata.str1.16507871919775359273.1)
+                  70011968    00000018                                                         : i2c_v1.obj (.rodata.str1.4713777613235169076.1)
+                  70011980    00000018                                                         : i2c_v1.obj (.rodata.str1.706085228479171695.1)
+                  70011998    00000017                                                         : soc_rcm.obj (.rodata.str1.1263028196474875090.1)
+                  700119af    00000016                                                         : ospi_v0.obj (.rodata.str1.11859302641611729341.1)
+                  700119c5    00000016                                                         : soc_rcm.obj (.rodata.str1.15837709475095375462.1)
+                  700119db    00000016                                                         : soc_rcm.obj (.rodata.str1.18101715471844446405.1)
+                  700119f1    00000016                                                         : soc_rcm.obj (.rodata.str1.503491203257075565.1)
+                  70011a07    00000015     board.am263px.r5f.ti-arm-clang.nortos.release.lib : flash_nor_ospi.obj (.rodata.str1.2781946345933921863.1)
+                  70011a1c    00000015     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.rodata.str1.9771253703579349310.1)
+                  70011a31    00000014                                                         : edma.obj (.rodata.str1.14977302951450442404.1)
+                  70011a45    00000014                                                         : edma.obj (.rodata.str1.16586217098785273673.1)
+                  70011a59    00000014                                                         : edma.obj (.rodata.str1.6479261940699871955.1)
+                  70011a6d    00000013                                                         : soc_rcm.obj (.rodata.str1.1513614241493853460.1)
+                  70011a80    00000013                                                         : uart_v0.obj (.rodata.str1.8511823138002593779.1)
+                  70011a93    00000012                                                         : uart_v0.obj (.rodata.str1.10085477686273322470.1)
+                  70011aa5    00000012                                                         : ospi_v0.obj (.rodata.str1.18098494674240039306.1)
+                  70011ab7    00000012                                                         : uart_v0.obj (.rodata.str1.1906408950570946892.1)
+                  70011ac9    00000012     ti_board_config.obj (.rodata.str1.2665699780754298233.1)
+                  70011adb    00000012     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : soc_rcm.obj (.rodata.str1.6089483996110695684.1)
+                  70011aed    00000012                                                         : edma.obj (.rodata.str1.8988798825313313125.1)
+                  70011aff    00000011     ti_drivers_open_close.obj (.rodata.str1.12213835641041270557.1)
+                  70011b10    00000011     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.rodata.str1.13359792024450833872.1)
+                  70011b21    00000011     ti_drivers_open_close.obj (.rodata.str1.17021506947730909760.1)
+                  70011b32    00000011     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0.obj (.rodata.str1.18277465892467933209.1)
+                  70011b43    00000011     ti_board_open_close.obj (.rodata.str1.2235680336123228840.1)
+                  70011b54    00000011     ti_drivers_open_close.obj (.rodata.str1.6292539624901818759.1)
+                  70011b65    00000011     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : edma.obj (.rodata.str1.7198617623142260305.1)
+                  70011b76    00000011     nortos.am263px.r5f.ti-arm-clang.release.lib : TimerP_rti_priv.obj (.rodata.str1.7786169893402823657.1)
+                  70011b87    00000001     --HOLE-- [fill = 0]
+                  70011b88    00000010     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0_lld.obj (.rodata.cst16)
+                  70011b98    00000010                                                         : i2c_v1.obj (.rodata.str1.15304174031418066064.1)
+                  70011ba8    00000010                                                         : edma.obj (.rodata.str1.16687974986316968853.1)
+                  70011bb8    00000010     ti_board_open_close.obj (.rodata.str1.1844215614325442070.1)
+                  70011bc8    00000010     ti_drivers_open_close.obj (.rodata.str1.6437641722977580707.1)
+                  70011bd8    0000000f     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.rodata.str1.11436736645546584573.1)
+                  70011be7    0000000f                                                         : edma.obj (.rodata.str1.12381575634899622488.1)
+                  70011bf6    0000000f                                                         : edma.obj (.rodata.str1.15707078201242323249.1)
+                  70011c05    0000000f                                                         : edma.obj (.rodata.str1.2781376525681532154.1)
+                  70011c14    0000000f                                                         : edma.obj (.rodata.str1.4907917467944964367.1)
+                  70011c23    0000000e                                                         : edma.obj (.rodata.str1.1669868279207928169.1)
+                  70011c31    0000000e                                                         : edma.obj (.rodata.str1.6128441279204879358.1)
+                  70011c3f    0000000e                                                         : edma.obj (.rodata.str1.6928588723460450634.1)
+                  70011c4d    0000000d                                                         : edma.obj (.rodata.str1.14657363906792235350.1)
+                  70011c5a    0000000d     nortos.am263px.r5f.ti-arm-clang.release.lib : TimerP_rti_priv.obj (.rodata.str1.15140844044942405278.1)
+                  70011c67    00000001     --HOLE-- [fill = 0]
+                  70011c68    0000000c     main.obj (.rodata..Lswitch.table.sbl_jtag_uniflash_load_file.35)
+                  70011c74    0000000c     main.obj (.rodata..Lswitch.table.sbl_jtag_uniflash_load_file)
+                  70011c80    0000000c     nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos_r5.obj (.rodata.str1.13463193513887205357.1)
+                  70011c8c    0000000c     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : ospi_v0.obj (.rodata.str1.1381366092953500863.1)
+                  70011c98    0000000c                                                         : edma.obj (.rodata.str1.8587431144907355806.1)
+                  70011ca4    0000000b                                                         : uart_v0.obj (.rodata.str1.1151567497034493012.1)
+                  70011caf    0000000b                                                         : edma.obj (.rodata.str1.597652134494230196.1)
+                  70011cba    0000000b                                                         : uart_v0.obj (.rodata.str1.6746041542798830823.1)
+                  70011cc5    0000000a                                                         : edma.obj (.rodata.str1.1531866724018994888.1)
+                  70011ccf    0000000a                                                         : edma.obj (.rodata.str1.15529668034699970473.1)
+                  70011cd9    0000000a                                                         : ospi_v0.obj (.rodata.str1.2522741049104592306.1)
+                  70011ce3    0000000a                                                         : i2c_v1.obj (.rodata.str1.3288561361854740495.1)
+                  70011ced    0000000a                                                         : soc_rcm.obj (.rodata.str1.3349473071634452315.1)
+                  70011cf7    0000000a                                                         : ospi_v0.obj (.rodata.str1.6252689431402132518.1)
+                  70011d01    0000000a     ti_board_open_close.obj (.rodata.str1.760704006985994805.1)
+                  70011d0b    0000000a     drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : uart_v0.obj (.rodata.str1.7892831408302009747.1)
+                  70011d15    0000000a                                                         : uart_v0.obj (.rodata.str1.8477608605346433529.1)
+                  70011d1f    00000009                                                         : i2c_v1.obj (.rodata.str1.6120977755438783109.1)
+                  70011d28    00000006                                                         : soc_rcm.obj (.rodata.str1.12246138248821672736.1)
+                  70011d2e    00000005     nortos.am263px.r5f.ti-arm-clang.release.lib : printf.obj (.rodata.str1.8544352122861784523.1)
+                  70011d33    00000005                                                 : printf.obj (.rodata.str1.8812429412984920041.1)
+                  70011d38    00000004                                                 : CacheP_armv7r.obj (.rodata.gCacheL1pCacheLineSize)
+                  70011d3c    00000004                                                 : printf.obj (.rodata.str1.13278797451342649413.1)
+                  70011d40    00000004                                                 : printf.obj (.rodata.str1.17155598869870286803.1)
+                  70011d44    0000000c     --HOLE-- [fill = 0]
+
+.bss       0    70011d80    00009300     UNINITIALIZED
+                  70011d80    00008000     main.obj (.bss)
+                  70019d80    0000080c     (.common:gHwiCtrl)
+                  7001a58c    000001d0     ti_drivers_config.obj (.bss.gI2cObjects)
+                  7001a75c    00000004     nortos.am263px.r5f.ti-arm-clang.release.lib : HwiP_armv7r_vim.obj (.bss.gdummy)
+                  7001a760    000001b0     ti_drivers_config.obj (.bss.gUartObjects)
+                  7001a910    00000180     main.obj (.bss.filename)
+                  7001aa90    00000150     ti_drivers_config.obj (.bss.gOspiObjects)
+                  7001abe0    00000124     (.common:gEepromObject_CAT24M)
+                  7001ad04    00000120     libsysbm.a : trgmsg.c.obj (.bss:_CIOBUF_)
+                  7001ae24    000000b0     ti_drivers_config.obj (.bss.gEdmaObjects)
+                  7001aed4    000000a0     libc.a : defs.c.obj (.bss.__TI_tmpnams)
+                  7001af74    00000038     (.common:gOspiEdmaArgs)
+                  7001afac    00000004            : memory.c.obj (.bss.sys_free)
+                  7001afb0    00000020     (.common:gClockCtrl)
+                  7001afd0    00000014     (.common:gFlashObject_IS25LX256)
+                  7001afe4    00000010     main.obj (.bss.inputStr)
+                  7001aff4    00000010     (.common:virtToPhymap)
+                  7001b004    00000008     libsysbm.a : hostopen.c.obj (.bss.parmbuf)
+                  7001b00c    00000008     (.common:gI2cHandle)
+                  7001b014    00000004     (.common:gEdmaHandle)
+                  7001b018    00000004     (.common:gEepromHandle)
+                  7001b01c    00000004     (.common:gFlashHandle)
+                  7001b020    00000004     (.common:gOspiHandle)
+                  7001b024    00000004     (.common:gUartHandle)
+                  7001b028    00000058     --HOLE--
+
+.sysmem    0    7001b080    00008000     UNINITIALIZED
+                  7001b080    00000010     libc.a : memory.c.obj (.sysmem)
+                  7001b090    00007ff0     --HOLE--
+
+.stack     0    70023080    00004000     UNINITIALIZED
+                  70023080    00000004     nortos.am263px.r5f.ti-arm-clang.release.lib : boot_armv7r_asm.obj (.stack)
+                  70023084    00003ffc     --HOLE--
+
+.irqstack 
+*          0    70027080    00001000     UNINITIALIZED
+                  70027080    00001000     --HOLE--
+
+.fiqstack 
+*          0    70028080    00000100     UNINITIALIZED
+                  70028080    00000100     --HOLE--
+
+.svcstack 
+*          0    70028180    00001000     UNINITIALIZED
+                  70028180    00001000     --HOLE--
+
+.abortstack 
+*          0    70029180    00000100     UNINITIALIZED
+                  70029180    00000100     --HOLE--
+
+.undefinedstack 
+*          0    70029280    00000100     UNINITIALIZED
+                  70029280    00000100     --HOLE--
+
+.bss.filebuf 
+*          0    700c0000    001c0000     NOLOAD SECTION
+                  700c0000    001c0000     main.obj (.bss.filebuf)
+
+__llvm_prf_cnts 
+*          0    70002100    00000000     UNINITIALIZED
+
+__llvm_prf_bits 
+*          0    70002100    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                                code    ro data   rw data
+       ------                                ----    -------   -------
+    obj/release/
+       main.obj                              1064    1687      1868462
+       ti_drivers_config.obj                 34      0         1904   
+       ti_board_open_close.obj               290     152       572    
+       ti_drivers_open_close.obj             484     282       148    
+       ti_board_config.obj                   342     106       0      
+       ti_dpl_config.obj                     96      100       28     
+       ti_power_clock_config.obj             124     0         64     
+       ti_pinmux_config.obj                  14      0         152    
+    +--+-------------------------------------+-------+---------+---------+
+       Total:                                2448    2327      1871330
+                                                                      
+    /home/epswbld5/ti/ccs2040/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/armv7r-ti-none-eabihf/c/libc.a
+       memory.c.obj                          1136    0         5      
+       strcmp32.S.obj                        924     0         0      
+       fopen.c.obj                           740     0         0      
+       fgets.c.obj                           640     0         0      
+       strtol.c.obj                          504     0         0      
+       defs.c.obj                            0       0         404    
+       setvbuf.c.obj                         324     0         0      
+       getdevice.c.obj                       284     0         0      
+       _io_perm.c.obj                        276     0         0      
+       aeabi_ctype.S.obj                     0       257       0      
+       fputc.c.obj                           256     0         0      
+       fclose.c.obj                          252     0         0      
+       _bufread.c.obj                        232     0         0      
+       fseek.c.obj                           184     0         0      
+       ftell.c.obj                           184     0         0      
+       fflush.c.obj                          136     0         0      
+       exit.c.obj                            92      0         8      
+       autoinit.c.obj                        84      0         0      
+       memcpy32.S.obj                        28      0         0      
+       memset32.S.obj                        24      0         0      
+       aeabi_portable.c.obj                  12      0         4      
+       _lock.c.obj                           4       0         8      
+    +--+-------------------------------------+-------+---------+---------+
+       Total:                                6316    257       429    
+                                                                      
+    /home/epswbld5/ti/ccs2040/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/armv7r-ti-none-eabihf/c/libsysbm.a
+       trgmsg.c.obj                          176     0         288    
+       open.c.obj                            312     0         1      
+       hostrename.c.obj                      216     0         0      
+       host_device.c.obj                     0       0         200    
+       hostopen.c.obj                        148     0         8      
+       hostlseek.c.obj                       152     0         0      
+       close.c.obj                           140     0         0      
+       hostread.c.obj                        132     0         0      
+       hostwrite.c.obj                       132     0         0      
+       hostunlink.c.obj                      108     0         0      
+       hostclose.c.obj                       96      0         0      
+       unlink.c.obj                          72      0         0      
+       lseek.c.obj                           52      0         0      
+       read.c.obj                            52      0         0      
+       write.c.obj                           52      0         0      
+       hostexit.c.obj                        8       0         0      
+       remove.c.obj                          4       0         0      
+    +--+-------------------------------------+-------+---------+---------+
+       Total:                                1852    0         497    
+                                                                      
+    /home/epswbld5/ti/ccs2040/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/armv7r-ti-none-eabihf/libclang_rt.builtins.a
+       udivsi3.S.obj                         464     0         0      
+       udivmoddi4.S.obj                      280     0         0      
+       aeabi_uldivmod.S.obj                  36      0         0      
+       aeabi_memset.S.obj                    28      0         0      
+       aeabi_memcpy.S.obj                    12      0         0      
+       aeabi_div0.c.obj                      8       0         0      
+    +--+-------------------------------------+-------+---------+---------+
+       Total:                                828     0         0      
+                                                                      
+    /nightlybuilds/mcupsdk_internal/jenkins/mcu_plus_sdk_am263px_11_01_00_19/source/board/lib/board.am263px.r5f.ti-arm-clang.nortos.release.lib
+       flash_nor_ospi.obj                    4814    91        76     
+       flash.obj                             500     0         0      
+       ioexp_tca6416.obj                     482     0         0      
+       ioexp_tca6424.obj                     480     0         0      
+       eeprom_cat24m.obj                     442     0         28     
+       eeprom.obj                            102     0         0      
+    +--+-------------------------------------+-------+---------+---------+
+       Total:                                6820    91        104    
+                                                                      
+    /nightlybuilds/mcupsdk_internal/jenkins/mcu_plus_sdk_am263px_11_01_00_19/source/drivers/lib/drivers.am263px.r5f.ti-arm-clang.nortos.release.lib
+       edma.obj                              4834    430       0      
+       ospi_v0_lld.obj                       3484    48        0      
+       i2c_v1_lld.obj                        3342    24        0      
+       soc_rcm.obj                           2424    443       0      
+       uart_v0_lld.obj                       2768    32        0      
+       ospi_phy_am26x_lld.obj                2468    0         128    
+       uart_v0.obj                           1728    199       20     
+       i2c_v1.obj                            1598    192       20     
+       ospi_v0.obj                           1428    101       20     
+       uart_dma_edma.obj                     1340    0         0      
+       ospi_edma_lld.obj                     1018    0         0      
+       bootloader_uniflash_common.obj        702     0         0      
+       soc.obj                               554     0         17     
+       bootloader_uniflash.obj               332     0         0      
+       bootloader_uniflash_mcelf.obj         270     0         0      
+       bootloader_uniflash_rprc.obj          240     0         0      
+       pinmux.obj                            64      0         0      
+       ospi_phy_am26x.obj                    32      0         0      
+    +--+-------------------------------------+-------+---------+---------+
+       Total:                                28626   1469      205    
+                                                                      
+    /nightlybuilds/mcupsdk_internal/jenkins/mcu_plus_sdk_am263px_11_01_00_19/source/kernel/nortos/lib/nortos.am263px.r5f.ti-arm-clang.release.lib
+       printf.obj                            4052    98        0      
+       HwiP_armv7r_vim.obj                   1186    0         2064   
+       CacheP_armv7r_asm.obj                 848     0         0      
+       HwiP_armv7r_handlers_nortos.obj       756     0         0      
+       ClockP_nortos.obj                     614     0         32     
+       TimerP_rti_priv.obj                   404     203       0      
+       MpuP_armv7r.obj                       514     0         0      
+       ClockP_nortos_r5.obj                  268     176       0      
+       HwiP_armv7r_handlers_nortos_asm.obj   380     0         0      
+       boot_armv7r_asm.obj                   324     0         0      
+       SemaphoreP_nortos.obj                 256     0         0      
+       CacheP_armv7r.obj                     216     8         0      
+       DebugP_log.obj                        154     42        4      
+       HwiP_armv7r_asm.obj                   152     0         0      
+       MpuP_armv7r_asm.obj                   128     0         0      
+       AddrTranslateP_32bit.obj              82      0         12     
+       DebugP_uartLogWriter.obj              70      0         4      
+       HwiP_armv7r_vectors_nortos_asm.obj    64      0         0      
+       DebugP_nortos.obj                     56      0         0      
+       boot_armv7r.obj                       28      0         0      
+       CpuId_armv7r.obj                      26      0         0      
+       TimerP_rti_nortos.obj                 24      0         0      
+       CpuId_armv7r_asm.obj                  12      0         0      
+       TaskP_nortos.obj                      2       0         0      
+    +--+-------------------------------------+-------+---------+---------+
+       Total:                                10616   527       2116   
+                                                                      
+    /nightlybuilds/mcupsdk_internal/jenkins/mcu_plus_sdk_am263px_11_01_00_19/source/middleware/lib/middleware.am263px.r5f.ti-arm-clang.nortos.release.lib
+       tielfup32.obj                         240     0         0      
+    +--+-------------------------------------+-------+---------+---------+
+       Total:                                240     0         0      
+                                                                      
+       Heap:                                 0       0         32768  
+       Stack:                                0       0         16384  
+    +--+-------------------------------------+-------+---------+---------+
+       Grand Total:                          57746   4671      1923833
+
+VENEERS
+
+callee name               veneer name
+   callee addr  veneer addr  call addr  call info
+--------------  -----------  ---------  ----------------
+__aeabi_memcpy            $Ven$TA$L$PI$$__aeabi_memcpy
+   7000f080     7000f094     7000eea8   drivers.am263px.r5f.ti-arm-clang.nortos.release.lib : i2c_v1.obj (.text.I2C_Transaction_init)
+HwiP_enable               $Ven$TA$L$PI$$HwiP_enable
+   7000f9f4     7000f09c     7000d968   ti_dpl_config.obj (.text.Dpl_init)
+HwiP_restore              $Ven$TA$L$PI$$HwiP_restore
+   7000fa14     7000f0a4     7000d928   nortos.am263px.r5f.ti-arm-clang.release.lib : ClockP_nortos.obj (.text.ClockP_stop)
+                             7000dbd6                                               : ClockP_nortos.obj (.text.ClockP_destruct)
+                             7000de82                                               : SemaphoreP_nortos.obj (.text.SemaphoreP_post)
+                             7000deb8                                               : ClockP_nortos.obj (.text.ClockP_start)
+HwiP_enableFIQ            $Ven$TA$L$PI$$HwiP_enableFIQ
+   7000fa04     7000fa44     7000f4a4   nortos.am263px.r5f.ti-arm-clang.release.lib : HwiP_armv7r_vim.obj (.text.hwi)
+CacheP_invL1d             $Ven$TA$L$PI$$CacheP_invL1d
+   7000fac0     7000fe68     7000fe64   nortos.am263px.r5f.ti-arm-clang.release.lib : CacheP_armv7r.obj (.text.cache)
+CacheP_enableL1p          $Ven$TA$L$PI$$CacheP_enableL1p
+   7000faa8     7000fe70     7000fe3e   nortos.am263px.r5f.ti-arm-clang.release.lib : CacheP_armv7r.obj (.text.cache)
+HwiP_restore              $Ven$TA$L$PI$$HwiP_restore
+   7000fa14     7000fe78     7000fe1e   nortos.am263px.r5f.ti-arm-clang.release.lib : CacheP_armv7r.obj (.text.cache)
+HwiP_restore              $Ven$TA$L$PI$$HwiP_restore
+   7000fa14     700100fc     7000ff78   nortos.am263px.r5f.ti-arm-clang.release.lib : MpuP_armv7r.obj (.text.mpu)
+                             7000ffb6                                               : MpuP_armv7r.obj (.text.mpu)
+MpuP_isEnableAsm          $Ven$TA$L$PI$$MpuP_isEnableAsm
+   700100d4     70010104     7000ff48   nortos.am263px.r5f.ti-arm-clang.release.lib : MpuP_armv7r.obj (.text.mpu)
+
+[9 trampolines]
+[13 trampoline calls]
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                                        
+-------   ----                                        
+7000cf99  AddrTranslateP_getLocalAddr                 
+7000e245  Board_driversClose                          
+7000ea85  Board_driversOpen                           
+7000ea25  Board_eepromClose                           
+7000cb8b  Board_eepromOpen                            
+7000c2bd  Board_flashOpen                             
+7000edad  Bootloader_Uniflash_MCELF_flashVerifyXIPFile
+7000edbb  Bootloader_Uniflash_MCELF_flashXIPFile      
+70004091  Bootloader_Uniflash_RPRC_flashVerifyXIPFile 
+7000efe9  Bootloader_Uniflash_RPRC_flashXIPFile       
+7000ac2d  Bootloader_uniflashFlashErase               
+7000a759  Bootloader_uniflashFlashFile                
+7000bc61  Bootloader_uniflashFlashFileSector          
+7000cfeb  Bootloader_uniflashFlashPhyTuningData       
+7000b91f  Bootloader_uniflashFlashVerifyFile          
+700077f1  Bootloader_uniflashProcessFlashCommands     
+7000eff0  C$$EXIT                                     
+7000cd38  C$$IO$$                                     
+7000e955  CSL_armR5GetCpuID                           
+7000ef88  CSL_armR5ReadMpidrReg                       
+7000fd60  CacheP_configForceWrThru                    
+7000fde9  CacheP_disable                              
+7000fa50  CacheP_disableL1d                           
+7000fa78  CacheP_disableL1p                           
+7000fe23  CacheP_enable                               
+7000fa90  CacheP_enableL1d                            
+7000faa8  CacheP_enableL1p                            
+7000fd54  CacheP_getCacheLevelInfo                    
+7000fd1c  CacheP_getEnabled                           
+7000fd91  CacheP_init                                 
+7000fe43  CacheP_inv                                  
+7000fac0  CacheP_invL1d                               
+7000fb34  CacheP_invL1dAll                            
+7000faf8  CacheP_invL1p                               
+7000fb3c  CacheP_invL1pAll                            
+7000fd80  CacheP_setDLFO                              
+7000fb44  CacheP_wb                                   
+7000fbbc  CacheP_wbAll                                
+7000fb80  CacheP_wbInv                                
+7000fc64  CacheP_wbInvAll                             
+7000fc7c  CacheP_wbInvAllAsm                          
+7000ef95  ClockP_Params_init                          
+7000e349  ClockP_construct                            
+7000dba1  ClockP_destruct                             
+7000ee8d  ClockP_getTicks                             
+7000cd45  ClockP_getTimeUsec                          
+70003c8d  ClockP_getTimerCount                        
+70008a99  ClockP_init                                 
+7000efad  ClockP_isActive                             
+7000de89  ClockP_start                                
+7000d8ed  ClockP_stop                                 
+7000f057  ClockP_timerClearOverflowInt                
+7000c9bd  ClockP_timerTickIsr                         
+7000eb8d  ClockP_usecToTicks                          
+7000e0c5  ClockP_usleep                               
+7000e6b9  DebugP_logZoneEnable                        
+7000dbdb  DebugP_uartLogWriterPutChar                 
+7000ee99  DebugP_uartSetDrvIndex                      
+7000d92d  Dpl_init                                    
+7000c479  Drivers_close                               
+7000d309  Drivers_edmaOpen                            
+7000c06d  Drivers_i2cOpen                             
+7000ea9b  Drivers_open                                
+7000d355  Drivers_ospiOpen                            
+7000d21f  Drivers_uartOpen                            
+7000d0e1  EDMA_allocDmaChannel                        
+7000d131  EDMA_allocParam                             
+7000d181  EDMA_allocTcc                               
+7000edc9  EDMA_ccPaRAMEntry_init                      
+7000e6d9  EDMA_chainChannel                           
+7000bded  EDMA_close                                  
+7000e4a7  EDMA_clrIntrRegion                          
+7000de1d  EDMA_clrMissEvtRegion                       
+7000b641  EDMA_configureChannelRegion                 
+7000d26d  EDMA_disableChInShadowRegRegion             
+7000e4cb  EDMA_disableEvtIntrRegion                   
+7000c39d  EDMA_disableTransferRegion                  
+7000e1e9  EDMA_enableChInShadowRegRegion              
+7000c40b  EDMA_enableTransferRegion                   
+70005d85  EDMA_freeChannelRegion                      
+7000b00d  EDMA_freeDmaChannel                         
+7000b0ad  EDMA_freeParam                              
+7000b14d  EDMA_freeTcc                                
+7000daed  EDMA_getBaseAddr                            
+7000e271  EDMA_getHandle                              
+7000eba1  EDMA_getRegionId                            
+70004fb5  EDMA_init                                   
+70004773  EDMA_isInterruptEnabled                     
+7000e5ed  EDMA_linkChannel                            
+7000d96d  EDMA_mapChToEvtQ                            
+700073ed  EDMA_open                                   
+7000e96f  EDMA_readEventStatusRegion                  
+7000e4ef  EDMA_readIntrStatusRegion                   
+7000a531  EDMA_registerIntr                           
+7000e3e9  EDMA_setPaRAM                               
+7000e0f7  EDMA_unmapChToEvtQ                          
+700099a5  EDMA_unregisterIntr                         
+7000e60f  EEPROM_CAT24M_close                         
+7000debd  EEPROM_CAT24M_open                          
+7000c1d9  EEPROM_CAT24M_read                          
+70009187  EEPROM_CAT24M_write                         
+7000edd7  EEPROM_close                                
+7000dc15  EEPROM_open                                 
+7000e7d9  EEPROM_read                                 
+7000e989  ELFUP_init                                  
+700098cd  ELFUP_update                                
+7000ede5  Flash_close                                 
+7000ec2d  Flash_eraseBlk                              
+7000ebb5  Flash_eraseSector                           
+7000e513  Flash_getAttrs                              
+7000e537  Flash_getHandle                             
+7000edf3  Flash_getPhyTuningOffset                    
+7000c4e5  Flash_offsetToBlkPage                       
+7000c32d  Flash_offsetToSectorPage                    
+7000dc4f  Flash_open                                  
+7000d869  Flash_quirkSpansionUNHYSADisable            
+7000e2f5  Flash_read                                  
+7000e31f  Flash_write                                 
+7000f994  GET_ADFSR                                   
+7000f9ac  GET_AIFSR                                   
+7000f99c  GET_DFAR                                    
+7000f98c  GET_DFSR                                    
+7000f9b4  GET_IFAR                                    
+7000f9a4  GET_IFSR                                    
+7000f9bc  GET_SPSR                                    
+7000c8fc  HOSTclose                                   
+7000eff0  HOSTexit                                    
+7000b5a8  HOSTlseek                                   
+7000b6d4  HOSTopen                                    
+7000bce4  HOSTread                                    
+7000b1ec  HOSTrename                                  
+7000c550  HOSTunlink                                  
+7000bd68  HOSTwrite                                   
+7000f1b9  HwiP_Params_init                            
+7000f171  HwiP_clearInt                               
+7000f1cb  HwiP_construct                              
+7000f8cc  HwiP_data_abort_handler                     
+7000f7c7  HwiP_data_abort_handler_c                   
+7000f30f  HwiP_destruct                               
+7000f9d4  HwiP_disable                                
+7000f9e4  HwiP_disableFIQ                             
+7000f0e9  HwiP_disableInt                             
+7000fa2c  HwiP_disableVIC                             
+7000f9f4  HwiP_enable                                 
+7000fa04  HwiP_enableFIQ                              
+7000f0c1  HwiP_enableInt                              
+7000fa1c  HwiP_enableVIC                              
+7000f5ff  HwiP_fiq_handler                            
+7000fa3c  HwiP_getCPSR                                
+7000f4a9  HwiP_inISR                                  
+7000f3e1  HwiP_init                                   
+7000f858  HwiP_irq_handler                            
+7000f563  HwiP_irq_handler_c                          
+7000f191  HwiP_post                                   
+7000f910  HwiP_prefetch_abort_handler                 
+7000f73d  HwiP_prefetch_abort_handler_c               
+7000f6af  HwiP_reserved_handler                       
+7000fa14  HwiP_restore                                
+7000f11b  HwiP_restoreInt                             
+7000f543  HwiP_restoreVimIrqPriMask                   
+7000f4ef  HwiP_setVimIrqPriMaskAtomic                 
+7000f4c5  HwiP_setVimIrqPriMaskNonAtomic              
+7000f70f  HwiP_svc_handler                            
+7000f95c  HwiP_undefined_handler                      
+7000f6dd  HwiP_undefined_handler_c                    
+7000f847  HwiP_user_data_abort_handler_c              
+7000f7b7  HwiP_user_prefetch_abort_handler_c          
+7000f6fb  HwiP_user_undefined_handler_c               
+7000eea5  I2C_Transaction_init                        
+7000b28d  I2C_close                                   
+70011338  I2C_defaultTransaction                      
+7000e29d  I2C_getHandle                               
+7000def1  I2C_init                                    
+7000e6f9  I2C_lld_Message_init                        
+7000eab1  I2C_lld_Transaction_init                    
+700068e5  I2C_lld_controllerIsr                       
+7000e217  I2C_lld_deInit                              
+70011878  I2C_lld_defaultMessage                      
+7000b769  I2C_lld_init                                
+7000a175  I2C_lld_mem_read                            
+7000ad7d  I2C_lld_mem_readIntr                        
+70009f29  I2C_lld_mem_write                           
+7000ae21  I2C_lld_mem_writeIntr                       
+70007285  I2C_lld_targetIsr                           
+7000c24b  I2C_lld_targetTransferIntr                  
+7000e40f  I2C_lld_transferIntr                        
+7000e435  I2C_lld_transferPoll                        
+70005b79  I2C_open                                    
+70007105  I2C_transfer                                
+7000df25  Module_clockEnable                          
+7000dcc3  Module_clockSetFrequency                    
+7000fec1  MpuP_RegionAttrs_init                       
+7000ff4d  MpuP_disable                                
+70010084  MpuP_disableAsm                             
+7001009c  MpuP_disableBRAsm                           
+7000ff7f  MpuP_enable                                 
+700100ac  MpuP_enableAsm                              
+700100c4  MpuP_enableBRAsm                            
+7000fe81  MpuP_getAttrs                               
+7000ffbb  MpuP_init                                   
+7000ff49  MpuP_isEnable                               
+700100d4  MpuP_isEnableAsm                            
+7001001d  MpuP_isUserAuthorizedToAccessMemory         
+7000fecf  MpuP_setRegion                              
+700100e8  MpuP_setRegionAsm                           
+7000e9bd  OSPI_EdmaParams_init                        
+7000eff9  OSPI_ReadCmdParams_init                     
+7000f001  OSPI_Transaction_init                       
+7000f009  OSPI_WriteCmdParams_init                    
+7000eeb1  OSPI_clearDualOpCodeMode                    
+7000d3ed  OSPI_close                                  
+7000eccb  OSPI_configBaudrate                         
+7000ecdb  OSPI_disableDacMode                         
+7000eceb  OSPI_disablePhy                             
+7000bac5  OSPI_dmaClose                               
+70006371  OSPI_dmaCopy                                
+70007551  OSPI_dmaOpen                                
+7000ecfb  OSPI_enableDacMode                          
+7000eebd  OSPI_enableModeBitsCmd                      
+7000eec9  OSPI_enableModeBitsRead                     
+7000ed0b  OSPI_enablePhy                              
+7000ed1b  OSPI_enableSDR                              
+7000ed2b  OSPI_getBaudRateDivFromObj                  
+7000e399  OSPI_getHandle                              
+7000c0e9  OSPI_init                                   
+7000ee0f  OSPI_isDacEnable                            
+7000f011  OSPI_isDmaInterruptEnabled                  
+7000ee1d  OSPI_isPhyEnable                            
+7000eadd  OSPI_lld_Transaction_init                   
+7000ee2b  OSPI_lld_clearDualOpCodeMode                
+7000e631  OSPI_lld_configBaudrate                     
+7000d439  OSPI_lld_deInit                             
+7000d51d  OSPI_lld_deInitDma                          
+7000e8ab  OSPI_lld_disableDacMode                     
+7000df59  OSPI_lld_disablePhy                         
+7000eaf3  OSPI_lld_disablePhyPipeline                 
+7000e55b  OSPI_lld_enableDacMode                      
+7000ec51  OSPI_lld_enableModeBitsCmd                  
+7000ee39  OSPI_lld_enableModeBitsRead                 
+7000d8ab  OSPI_lld_enablePhy                          
+7000eb09  OSPI_lld_enableSDR                          
+7000eed5  OSPI_lld_getFlashDataBaseAddr               
+7000b9ad  OSPI_lld_init                               
+7000aec5  OSPI_lld_initDma                            
+7000f039  OSPI_lld_isDacEnable                        
+7000f03f  OSPI_lld_isPhyEnable                        
+70008775  OSPI_lld_isr                                
+7000c95d  OSPI_lld_phyBasicConfig                     
+70002101  OSPI_lld_phyFindOTP1                        
+7000d685  OSPI_lld_phyFindRxHigh                      
+7000d6cb  OSPI_lld_phyFindRxLow                       
+7000d565  OSPI_lld_phyFindTxHigh                      
+7000d5ad  OSPI_lld_phyFindTxLow                       
+7000ed3d  OSPI_lld_phyGetTuningData                   
+7000d9ad  OSPI_lld_phyReadAttackVector                
+7000c5bd  OSPI_lld_phyResyncDLL                       
+7000d711  OSPI_lld_phySetRdDelayTxRxDLL               
+7000db29  OSPI_lld_phyTuneDDR                         
+7000e7f7  OSPI_lld_readBaudRateDivFromReg             
+70008ea1  OSPI_lld_readCmd                            
+7000e719  OSPI_lld_readCmdParams_init                 
+7000f019  OSPI_lld_readCompleteCallback               
+7000df8d  OSPI_lld_readDirect                         
+70009091  OSPI_lld_readDirectDma                      
+7000ebc9  OSPI_lld_setCmdDummyCycles                  
+7000f045  OSPI_lld_setCmdExtType                      
+7000e653  OSPI_lld_setDeviceSize                      
+7000ee47  OSPI_lld_setModeBits                        
+7000e8c7  OSPI_lld_setNumAddrBytes                    
+7000f04b  OSPI_lld_setPhyEnableSuccess                
+7000945d  OSPI_lld_setProtocol                        
+7000e9f1  OSPI_lld_setRdDataCaptureDelay              
+7000ed4d  OSPI_lld_setReadDummyCycles                 
+7000eb1f  OSPI_lld_setResetPinStatus                  
+7000cb31  OSPI_lld_setXferOpCodes                     
+70009717  OSPI_lld_writeCmd                           
+7000e739  OSPI_lld_writeCmdParams_init                
+70008f99  OSPI_lld_writeIndirect                      
+70005701  OSPI_open                                   
+7000f05b  OSPI_phyGetTuningData                       
+7000ee55  OSPI_phyReadAttackVector                    
+7000ee63  OSPI_phyTuneDDR                             
+7000e759  OSPI_readCmd                                
+7000beed  OSPI_readDirect                             
+7000eee1  OSPI_setCmdDummyCycles                      
+7000eeed  OSPI_setCmdExtType                          
+7000eef9  OSPI_setDeviceSize                          
+7000ef05  OSPI_setModeBits                            
+7000ef11  OSPI_setNumAddrBytes                        
+7000ef1d  OSPI_setPhyEnableSuccess                    
+7000ef29  OSPI_setProtocol                            
+7000ed5d  OSPI_setRdDataCaptureDelay                  
+7000ef35  OSPI_setReadDummyCycles                     
+7000ed6d  OSPI_setResetPinStatus                      
+7000ef41  OSPI_setXferOpCodes                         
+7000e779  OSPI_writeCmd                               
+7000d79d  OSPI_writeIndirect                          
+7000d9ed  Pinmux_config                               
+7000ee71  Pinmux_init                                 
+7000ee7f  PowerClock_init                             
+7000ca79  SOC_controlModuleLockMMR                    
+7000c835  SOC_controlModuleUnlockMMR                  
+7000f051  SOC_moduleClockEnable                       
+7000e3c1  SOC_moduleSetClockFrequency                 
+7000337d  SOC_rcmEnablePeripheralClock                
+70008661  SOC_rcmGetPeripheralClockFrequency          
+7000e8e5  SOC_rcmIsR5FInLockStepMode                  
+7000549d  SOC_rcmSetPeripheralClock                   
+70007d0d  SOC_virtToPhy                               
+7000eb35  SemaphoreP_constructBinary                  
+7000ebdd  SemaphoreP_constructMutex                   
+700027eb  SemaphoreP_destruct                         
+7000b46d  SemaphoreP_pend                             
+7000de53  SemaphoreP_post                             
+7000e697  System_init                                 
+7000cbe3  TCA6416_Flash_reset                         
+7000ef4d  TCA6416_Params_init                         
+7000e851  TCA6416_close                               
+7000a2f5  TCA6416_config                              
+7000dcfd  TCA6416_open                                
+7000a235  TCA6416_setOutput                           
+7000ca1b  TCA6424_Flash_reset                         
+7000ef59  TCA6424_Params_init                         
+7000e86f  TCA6424_close                               
+7000a3b3  TCA6424_config                              
+7000dd37  TCA6424_open                                
+7000a471  TCA6424_setOutput                           
+7000e938  TI_memcpy_small                             
+7000ea6c  TI_memset_small                             
+70002dfb  TaskP_yield                                 
+7000f05f  TimerP_Params_init                          
+7000e799  TimerP_Params_initPriv                      
+7000f063  TimerP_clearOverflowInt                     
+7000f021  TimerP_clearOverflowIntPriv                 
+7000f067  TimerP_getCount                             
+7000ea55  TimerP_getCountPriv                         
+7000f06b  TimerP_getReloadCount                       
+7000efcb  TimerP_getReloadCountPriv                   
+7000f06f  TimerP_setup                                
+70007bcd  TimerP_setupPriv                            
+7000f073  TimerP_start                                
+7000efd5  TimerP_startPriv                            
+7000eb4b  UART_IsTxRxFifoEmpty                        
+7000d7e1  UART_Params_init                            
+7000ebf1  UART_Transaction_init                       
+7000eb61  UART_checkCharsAvailInFifo                  
+70007e49  UART_close                                  
+7000bf6d  UART_flushTxFifo                            
+7000e7b9  UART_getChar                                
+7000e2c9  UART_getHandle                              
+7000eb77  UART_getIntrIdentityStatus                  
+7000bb51  UART_init                                   
+7000ed7d  UART_intr2Disable                           
+7000cd9b  UART_intrDisable                            
+7000efdf  UART_lld_Transaction_deInit                 
+7000793d  UART_lld_controllerIsr                      
+7000da2d  UART_lld_deInit                             
+7000d825  UART_lld_deInitDma                          
+700076a1  UART_lld_dmaDeInit                          
+7000e45b  UART_lld_dmaDisableChannel                  
+70006de1  UART_lld_dmaInit                            
+7000b32d  UART_lld_dmaRead                            
+70008b9d  UART_lld_dmaWrite                           
+7000dd71  UART_lld_flushTxFifo                        
+7000a0b1  UART_lld_init                               
+70009b45  UART_lld_initDma                            
+70008883  UART_lld_write                              
+7000c629  UART_lld_writeDma                           
+7000c767  UART_lld_writeIntr                          
+70004a89  UART_open                                   
+7000ec75  UART_operatingModeSelect                    
+7000c899  UART_procLineStatusErr                      
+7000ec87  UART_readLineStatus                         
+7000e88d  UART_spaceAvail                             
+70008da5  UART_write                                  
+7000cdf1  UART_writeCancelNoCB                        
+7001ad04  _CIOBUF_                                    
+7000cad5  _DebugP_assert                              
+70010255  _DebugP_assertNoLog                         
+7000dde5  _DebugP_logZone                             
+70029280  __ABORT_STACK_END                           
+00000100  __ABORT_STACK_SIZE                          
+70029180  __ABORT_STACK_START                         
+7001b080  __BSS_END                                   
+70011d80  __BSS_START                                 
+7001ad04  __CIOBUF_                                   
+70028180  __FIQ_STACK_END                             
+00000100  __FIQ_STACK_SIZE                            
+70028080  __FIQ_STACK_START                           
+70028080  __IRQ_STACK_END                             
+00001000  __IRQ_STACK_SIZE                            
+70027080  __IRQ_STACK_START                           
+70027080  __STACK_END                                 
+00004000  __STACK_SIZE                                
+70029180  __SVC_STACK_END                             
+00001000  __SVC_STACK_SIZE                            
+70028180  __SVC_STACK_START                           
+00008000  __SYSMEM_SIZE                               
+00000000  __TI_ATRegion0_region_sz                    
+00000000  __TI_ATRegion0_src_addr                     
+00000000  __TI_ATRegion0_trg_addr                     
+00000000  __TI_ATRegion1_region_sz                    
+00000000  __TI_ATRegion1_src_addr                     
+00000000  __TI_ATRegion1_trg_addr                     
+00000000  __TI_ATRegion2_region_sz                    
+00000000  __TI_ATRegion2_src_addr                     
+00000000  __TI_ATRegion2_trg_addr                     
+UNDEFED   __TI_CINIT_Base                             
+UNDEFED   __TI_CINIT_Limit                            
+UNDEFED   __TI_Handler_Table_Base                     
+UNDEFED   __TI_Handler_Table_Limit                    
+7000cf44  __TI_auto_init_nobinit_nopinit              
+70009548  __TI_buff_read                              
+7000cc3c  __TI_cleanup                                
+70010a74  __TI_cleanup_ptr                            
+7000a974  __TI_closefile                              
+7000bbd8  __TI_doflush                                
+70010a78  __TI_dtors_ptr                              
+70010a4c  __TI_ft_end                                 
+ffffffff  __TI_pprof_out_hndl                         
+ffffffff  __TI_prof_data_size                         
+ffffffff  __TI_prof_data_start                        
+7000c160  __TI_rd_ok                                  
+7000cc94  __TI_readmsg                                
+70002000  __TI_static_base__                          
+7001aed4  __TI_tmpnams                                
+7000ccec  __TI_writemsg                               
+7000b50c  __TI_wrt_ok                                 
+70029380  __UNDEFINED_STACK_END                       
+00000100  __UNDEFINED_STACK_SIZE                      
+70029280  __UNDEFINED_STACK_START                     
+70010b00  __aeabi_ctype_table_                        
+70010b00  __aeabi_ctype_table_C                       
+70010ab4  __aeabi_errno                               
+7000ef64  __aeabi_errno_addr                          
+7000f078  __aeabi_idiv0                               
+7000f07c  __aeabi_ldiv0                               
+7000ef70  __aeabi_memclr                              
+7000ef70  __aeabi_memclr4                             
+7000ef70  __aeabi_memclr8                             
+7000f080  __aeabi_memcpy                              
+7000f080  __aeabi_memcpy4                             
+7000f080  __aeabi_memcpy8                             
+7000ed8c  __aeabi_memset                              
+7000ed8c  __aeabi_memset4                             
+7000ed8c  __aeabi_memset8                             
+70006554  __aeabi_uidiv                               
+7000e5a4  __aeabi_uldivmod                            
+ffffffff  __binit__                                   
+7001028f  __mpu_init                                  
+70023080  __stack                                     
+70002100  __start___llvm_prf_bits                     
+70002100  __start___llvm_prf_cnts                     
+70002100  __stop___llvm_prf_bits                      
+70002100  __stop___llvm_prf_cnts                      
+70008548  __udivmoddi4                                
+70006554  __udivsi3                                   
+70010134  _c_int00                                    
+70010110  _c_int00_sbl                                
+70010778  _device                                     
+700103c0  _ftable                                     
+70010ab8  _lock                                       
+7000f084  _nop                                        
+70010848  _stream                                     
+7001b080  _sys_memory                                 
+UNDEFED   _system_post_cinit                          
+70010273  _system_pre_init                            
+70010abc  _unlock                                     
+70002000  _vectors                                    
+7000f030  abort                                       
+70006c3c  aligned_alloc                               
+ffffffff  binit                                       
+7000b3cd  board_flash_reset                           
+7000ba38  close                                       
+7000ce9c  exit                                        
+7000d484  fclose                                      
+7000cef0  finddevice                                  
+7000e481  flashFixUpOspiBoot                          
+7000d4d0  fopen                                       
+7000936c  fputc                                       
+70006a94  free                                        
+7000f088  fseek                                       
+7000a80c  fseeko                                      
+7000f08c  ftell                                       
+7000a8c0  ftello                                      
+70010e58  gADPLLJConfigTbl                            
+70010a50  gAddrTranslateConfig                        
+70010c04  gCacheConfig                                
+70011334  gCacheL1dCacheLineSize                      
+70011d38  gCacheL1pCacheLineSize                      
+70010998  gClockConfig                                
+7001afb0  gClockCtrl                                  
+70010ac0  gDebugLogZone                               
+70010ac4  gDebugP_uartDrvIndex                        
+70010a7c  gEdmaConfig                                 
+70010ac8  gEdmaConfigNum                              
+7001b014  gEdmaHandle                                 
+70010a84  gEdmaParams                                 
+70010a5c  gEepromAttrs_CAT24M                         
+70010a68  gEepromConfig                               
+70010acc  gEepromConfigNum                            
+70010a1c  gEepromFxns_CAT24M                          
+7001b018  gEepromHandle                               
+7001abe0  gEepromObject_CAT24M                        
+70010a8c  gEepromParams                               
+700c0000  gFileBuf                                    
+70010898  gFlashAttrs_IS25LX256                       
+7001097c  gFlashConfig                                
+70010ad0  gFlashConfigNum                             
+70010674  gFlashDevCfg_IS25LX256                      
+7001b01c  gFlashHandle                                
+70010930  gFlashNorOspiFxns                           
+7001afd0  gFlashObject_IS25LX256                      
+70010a94  gFlashParams                                
+70010958  gFlashToSpiProtocolMap                      
+70010ad4  gHwiConfig                                  
+70019d80  gHwiCtrl                                    
+70010a2c  gI2cConfig                                  
+70010ad8  gI2cConfigNum                               
+7001b00c  gI2cHandle                                  
+700109b0  gI2cParams                                  
+700102a0  gMainMenu                                   
+70010c0c  gMpuConfig                                  
+70010c18  gMpuRegionConfig                            
+70010a9c  gOspiConfig                                 
+70010adc  gOspiConfigNum                              
+70010ae0  gOspiDmaConfig                              
+7001af74  gOspiEdmaArgs                               
+7001b020  gOspiHandle                                 
+70010ae4  gOspiParams                                 
+700118f0  gPeripheralClkSrcInfoMap                    
+70010a3c  gSocModules                                 
+70010900  gSocModulesClockFrequency                   
+70010aac  gUartConfig                                 
+70010ae8  gUartConfigNum                              
+70010aec  gUartDmaChConfig                            
+700102a0  gUartDmaHandle                              
+7001b024  gUartHandle                                 
+700107f0  gUartParams                                 
+70011d80  gVerifyBuf                                  
+70009c10  getdevice                                   
+7000ec18  gets                                        
+700103be  isMapAvailable                              
+7000e028  lseek                                       
+700081ed  main                                        
+7000ef7c  malloc                                      
+70006c3c  memalign                                    
+70007f80  open                                        
+7001b004  parmbuf                                     
+7000ed9c  putchar                                     
+7000ec99  putchar_                                    
+7000e05c  read                                        
+7000f090  remove                                      
+7000d08f  sbl_jtag_uniflash_erase_all                 
+70004d29  sbl_jtag_uniflash_load_file                 
+70007a88  setvbuf                                     
+700040a0  strcmp                                      
+70005f88  strtol                                      
+7000d63c  unlink                                      
+7001aff4  virtToPhymap                                
+7000e5c9  vprintf_                                    
+7000e090  write                                       
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                                        
+-------   ----                                        
+00000000  __TI_ATRegion0_region_sz                    
+00000000  __TI_ATRegion0_src_addr                     
+00000000  __TI_ATRegion0_trg_addr                     
+00000000  __TI_ATRegion1_region_sz                    
+00000000  __TI_ATRegion1_src_addr                     
+00000000  __TI_ATRegion1_trg_addr                     
+00000000  __TI_ATRegion2_region_sz                    
+00000000  __TI_ATRegion2_src_addr                     
+00000000  __TI_ATRegion2_trg_addr                     
+00000100  __ABORT_STACK_SIZE                          
+00000100  __FIQ_STACK_SIZE                            
+00000100  __UNDEFINED_STACK_SIZE                      
+00001000  __IRQ_STACK_SIZE                            
+00001000  __SVC_STACK_SIZE                            
+00004000  __STACK_SIZE                                
+00008000  __SYSMEM_SIZE                               
+70002000  __TI_static_base__                          
+70002000  _vectors                                    
+70002100  __start___llvm_prf_bits                     
+70002100  __start___llvm_prf_cnts                     
+70002100  __stop___llvm_prf_bits                      
+70002100  __stop___llvm_prf_cnts                      
+70002101  OSPI_lld_phyFindOTP1                        
+700027eb  SemaphoreP_destruct                         
+70002dfb  TaskP_yield                                 
+7000337d  SOC_rcmEnablePeripheralClock                
+70003c8d  ClockP_getTimerCount                        
+70004091  Bootloader_Uniflash_RPRC_flashVerifyXIPFile 
+700040a0  strcmp                                      
+70004773  EDMA_isInterruptEnabled                     
+70004a89  UART_open                                   
+70004d29  sbl_jtag_uniflash_load_file                 
+70004fb5  EDMA_init                                   
+7000549d  SOC_rcmSetPeripheralClock                   
+70005701  OSPI_open                                   
+70005b79  I2C_open                                    
+70005d85  EDMA_freeChannelRegion                      
+70005f88  strtol                                      
+70006371  OSPI_dmaCopy                                
+70006554  __aeabi_uidiv                               
+70006554  __udivsi3                                   
+700068e5  I2C_lld_controllerIsr                       
+70006a94  free                                        
+70006c3c  aligned_alloc                               
+70006c3c  memalign                                    
+70006de1  UART_lld_dmaInit                            
+70007105  I2C_transfer                                
+70007285  I2C_lld_targetIsr                           
+700073ed  EDMA_open                                   
+70007551  OSPI_dmaOpen                                
+700076a1  UART_lld_dmaDeInit                          
+700077f1  Bootloader_uniflashProcessFlashCommands     
+7000793d  UART_lld_controllerIsr                      
+70007a88  setvbuf                                     
+70007bcd  TimerP_setupPriv                            
+70007d0d  SOC_virtToPhy                               
+70007e49  UART_close                                  
+70007f80  open                                        
+700081ed  main                                        
+70008548  __udivmoddi4                                
+70008661  SOC_rcmGetPeripheralClockFrequency          
+70008775  OSPI_lld_isr                                
+70008883  UART_lld_write                              
+70008a99  ClockP_init                                 
+70008b9d  UART_lld_dmaWrite                           
+70008da5  UART_write                                  
+70008ea1  OSPI_lld_readCmd                            
+70008f99  OSPI_lld_writeIndirect                      
+70009091  OSPI_lld_readDirectDma                      
+70009187  EEPROM_CAT24M_write                         
+7000936c  fputc                                       
+7000945d  OSPI_lld_setProtocol                        
+70009548  __TI_buff_read                              
+70009717  OSPI_lld_writeCmd                           
+700098cd  ELFUP_update                                
+700099a5  EDMA_unregisterIntr                         
+70009b45  UART_lld_initDma                            
+70009c10  getdevice                                   
+70009f29  I2C_lld_mem_write                           
+7000a0b1  UART_lld_init                               
+7000a175  I2C_lld_mem_read                            
+7000a235  TCA6416_setOutput                           
+7000a2f5  TCA6416_config                              
+7000a3b3  TCA6424_config                              
+7000a471  TCA6424_setOutput                           
+7000a531  EDMA_registerIntr                           
+7000a759  Bootloader_uniflashFlashFile                
+7000a80c  fseeko                                      
+7000a8c0  ftello                                      
+7000a974  __TI_closefile                              
+7000ac2d  Bootloader_uniflashFlashErase               
+7000ad7d  I2C_lld_mem_readIntr                        
+7000ae21  I2C_lld_mem_writeIntr                       
+7000aec5  OSPI_lld_initDma                            
+7000b00d  EDMA_freeDmaChannel                         
+7000b0ad  EDMA_freeParam                              
+7000b14d  EDMA_freeTcc                                
+7000b1ec  HOSTrename                                  
+7000b28d  I2C_close                                   
+7000b32d  UART_lld_dmaRead                            
+7000b3cd  board_flash_reset                           
+7000b46d  SemaphoreP_pend                             
+7000b50c  __TI_wrt_ok                                 
+7000b5a8  HOSTlseek                                   
+7000b641  EDMA_configureChannelRegion                 
+7000b6d4  HOSTopen                                    
+7000b769  I2C_lld_init                                
+7000b91f  Bootloader_uniflashFlashVerifyFile          
+7000b9ad  OSPI_lld_init                               
+7000ba38  close                                       
+7000bac5  OSPI_dmaClose                               
+7000bb51  UART_init                                   
+7000bbd8  __TI_doflush                                
+7000bc61  Bootloader_uniflashFlashFileSector          
+7000bce4  HOSTread                                    
+7000bd68  HOSTwrite                                   
+7000bded  EDMA_close                                  
+7000beed  OSPI_readDirect                             
+7000bf6d  UART_flushTxFifo                            
+7000c06d  Drivers_i2cOpen                             
+7000c0e9  OSPI_init                                   
+7000c160  __TI_rd_ok                                  
+7000c1d9  EEPROM_CAT24M_read                          
+7000c24b  I2C_lld_targetTransferIntr                  
+7000c2bd  Board_flashOpen                             
+7000c32d  Flash_offsetToSectorPage                    
+7000c39d  EDMA_disableTransferRegion                  
+7000c40b  EDMA_enableTransferRegion                   
+7000c479  Drivers_close                               
+7000c4e5  Flash_offsetToBlkPage                       
+7000c550  HOSTunlink                                  
+7000c5bd  OSPI_lld_phyResyncDLL                       
+7000c629  UART_lld_writeDma                           
+7000c767  UART_lld_writeIntr                          
+7000c835  SOC_controlModuleUnlockMMR                  
+7000c899  UART_procLineStatusErr                      
+7000c8fc  HOSTclose                                   
+7000c95d  OSPI_lld_phyBasicConfig                     
+7000c9bd  ClockP_timerTickIsr                         
+7000ca1b  TCA6424_Flash_reset                         
+7000ca79  SOC_controlModuleLockMMR                    
+7000cad5  _DebugP_assert                              
+7000cb31  OSPI_lld_setXferOpCodes                     
+7000cb8b  Board_eepromOpen                            
+7000cbe3  TCA6416_Flash_reset                         
+7000cc3c  __TI_cleanup                                
+7000cc94  __TI_readmsg                                
+7000ccec  __TI_writemsg                               
+7000cd38  C$$IO$$                                     
+7000cd45  ClockP_getTimeUsec                          
+7000cd9b  UART_intrDisable                            
+7000cdf1  UART_writeCancelNoCB                        
+7000ce9c  exit                                        
+7000cef0  finddevice                                  
+7000cf44  __TI_auto_init_nobinit_nopinit              
+7000cf99  AddrTranslateP_getLocalAddr                 
+7000cfeb  Bootloader_uniflashFlashPhyTuningData       
+7000d08f  sbl_jtag_uniflash_erase_all                 
+7000d0e1  EDMA_allocDmaChannel                        
+7000d131  EDMA_allocParam                             
+7000d181  EDMA_allocTcc                               
+7000d21f  Drivers_uartOpen                            
+7000d26d  EDMA_disableChInShadowRegRegion             
+7000d309  Drivers_edmaOpen                            
+7000d355  Drivers_ospiOpen                            
+7000d3ed  OSPI_close                                  
+7000d439  OSPI_lld_deInit                             
+7000d484  fclose                                      
+7000d4d0  fopen                                       
+7000d51d  OSPI_lld_deInitDma                          
+7000d565  OSPI_lld_phyFindTxHigh                      
+7000d5ad  OSPI_lld_phyFindTxLow                       
+7000d63c  unlink                                      
+7000d685  OSPI_lld_phyFindRxHigh                      
+7000d6cb  OSPI_lld_phyFindRxLow                       
+7000d711  OSPI_lld_phySetRdDelayTxRxDLL               
+7000d79d  OSPI_writeIndirect                          
+7000d7e1  UART_Params_init                            
+7000d825  UART_lld_deInitDma                          
+7000d869  Flash_quirkSpansionUNHYSADisable            
+7000d8ab  OSPI_lld_enablePhy                          
+7000d8ed  ClockP_stop                                 
+7000d92d  Dpl_init                                    
+7000d96d  EDMA_mapChToEvtQ                            
+7000d9ad  OSPI_lld_phyReadAttackVector                
+7000d9ed  Pinmux_config                               
+7000da2d  UART_lld_deInit                             
+7000daed  EDMA_getBaseAddr                            
+7000db29  OSPI_lld_phyTuneDDR                         
+7000dba1  ClockP_destruct                             
+7000dbdb  DebugP_uartLogWriterPutChar                 
+7000dc15  EEPROM_open                                 
+7000dc4f  Flash_open                                  
+7000dcc3  Module_clockSetFrequency                    
+7000dcfd  TCA6416_open                                
+7000dd37  TCA6424_open                                
+7000dd71  UART_lld_flushTxFifo                        
+7000dde5  _DebugP_logZone                             
+7000de1d  EDMA_clrMissEvtRegion                       
+7000de53  SemaphoreP_post                             
+7000de89  ClockP_start                                
+7000debd  EEPROM_CAT24M_open                          
+7000def1  I2C_init                                    
+7000df25  Module_clockEnable                          
+7000df59  OSPI_lld_disablePhy                         
+7000df8d  OSPI_lld_readDirect                         
+7000e028  lseek                                       
+7000e05c  read                                        
+7000e090  write                                       
+7000e0c5  ClockP_usleep                               
+7000e0f7  EDMA_unmapChToEvtQ                          
+7000e1e9  EDMA_enableChInShadowRegRegion              
+7000e217  I2C_lld_deInit                              
+7000e245  Board_driversClose                          
+7000e271  EDMA_getHandle                              
+7000e29d  I2C_getHandle                               
+7000e2c9  UART_getHandle                              
+7000e2f5  Flash_read                                  
+7000e31f  Flash_write                                 
+7000e349  ClockP_construct                            
+7000e399  OSPI_getHandle                              
+7000e3c1  SOC_moduleSetClockFrequency                 
+7000e3e9  EDMA_setPaRAM                               
+7000e40f  I2C_lld_transferIntr                        
+7000e435  I2C_lld_transferPoll                        
+7000e45b  UART_lld_dmaDisableChannel                  
+7000e481  flashFixUpOspiBoot                          
+7000e4a7  EDMA_clrIntrRegion                          
+7000e4cb  EDMA_disableEvtIntrRegion                   
+7000e4ef  EDMA_readIntrStatusRegion                   
+7000e513  Flash_getAttrs                              
+7000e537  Flash_getHandle                             
+7000e55b  OSPI_lld_enableDacMode                      
+7000e5a4  __aeabi_uldivmod                            
+7000e5c9  vprintf_                                    
+7000e5ed  EDMA_linkChannel                            
+7000e60f  EEPROM_CAT24M_close                         
+7000e631  OSPI_lld_configBaudrate                     
+7000e653  OSPI_lld_setDeviceSize                      
+7000e697  System_init                                 
+7000e6b9  DebugP_logZoneEnable                        
+7000e6d9  EDMA_chainChannel                           
+7000e6f9  I2C_lld_Message_init                        
+7000e719  OSPI_lld_readCmdParams_init                 
+7000e739  OSPI_lld_writeCmdParams_init                
+7000e759  OSPI_readCmd                                
+7000e779  OSPI_writeCmd                               
+7000e799  TimerP_Params_initPriv                      
+7000e7b9  UART_getChar                                
+7000e7d9  EEPROM_read                                 
+7000e7f7  OSPI_lld_readBaudRateDivFromReg             
+7000e851  TCA6416_close                               
+7000e86f  TCA6424_close                               
+7000e88d  UART_spaceAvail                             
+7000e8ab  OSPI_lld_disableDacMode                     
+7000e8c7  OSPI_lld_setNumAddrBytes                    
+7000e8e5  SOC_rcmIsR5FInLockStepMode                  
+7000e938  TI_memcpy_small                             
+7000e955  CSL_armR5GetCpuID                           
+7000e96f  EDMA_readEventStatusRegion                  
+7000e989  ELFUP_init                                  
+7000e9bd  OSPI_EdmaParams_init                        
+7000e9f1  OSPI_lld_setRdDataCaptureDelay              
+7000ea25  Board_eepromClose                           
+7000ea55  TimerP_getCountPriv                         
+7000ea6c  TI_memset_small                             
+7000ea85  Board_driversOpen                           
+7000ea9b  Drivers_open                                
+7000eab1  I2C_lld_Transaction_init                    
+7000eadd  OSPI_lld_Transaction_init                   
+7000eaf3  OSPI_lld_disablePhyPipeline                 
+7000eb09  OSPI_lld_enableSDR                          
+7000eb1f  OSPI_lld_setResetPinStatus                  
+7000eb35  SemaphoreP_constructBinary                  
+7000eb4b  UART_IsTxRxFifoEmpty                        
+7000eb61  UART_checkCharsAvailInFifo                  
+7000eb77  UART_getIntrIdentityStatus                  
+7000eb8d  ClockP_usecToTicks                          
+7000eba1  EDMA_getRegionId                            
+7000ebb5  Flash_eraseSector                           
+7000ebc9  OSPI_lld_setCmdDummyCycles                  
+7000ebdd  SemaphoreP_constructMutex                   
+7000ebf1  UART_Transaction_init                       
+7000ec18  gets                                        
+7000ec2d  Flash_eraseBlk                              
+7000ec51  OSPI_lld_enableModeBitsCmd                  
+7000ec75  UART_operatingModeSelect                    
+7000ec87  UART_readLineStatus                         
+7000ec99  putchar_                                    
+7000eccb  OSPI_configBaudrate                         
+7000ecdb  OSPI_disableDacMode                         
+7000eceb  OSPI_disablePhy                             
+7000ecfb  OSPI_enableDacMode                          
+7000ed0b  OSPI_enablePhy                              
+7000ed1b  OSPI_enableSDR                              
+7000ed2b  OSPI_getBaudRateDivFromObj                  
+7000ed3d  OSPI_lld_phyGetTuningData                   
+7000ed4d  OSPI_lld_setReadDummyCycles                 
+7000ed5d  OSPI_setRdDataCaptureDelay                  
+7000ed6d  OSPI_setResetPinStatus                      
+7000ed7d  UART_intr2Disable                           
+7000ed8c  __aeabi_memset                              
+7000ed8c  __aeabi_memset4                             
+7000ed8c  __aeabi_memset8                             
+7000ed9c  putchar                                     
+7000edad  Bootloader_Uniflash_MCELF_flashVerifyXIPFile
+7000edbb  Bootloader_Uniflash_MCELF_flashXIPFile      
+7000edc9  EDMA_ccPaRAMEntry_init                      
+7000edd7  EEPROM_close                                
+7000ede5  Flash_close                                 
+7000edf3  Flash_getPhyTuningOffset                    
+7000ee0f  OSPI_isDacEnable                            
+7000ee1d  OSPI_isPhyEnable                            
+7000ee2b  OSPI_lld_clearDualOpCodeMode                
+7000ee39  OSPI_lld_enableModeBitsRead                 
+7000ee47  OSPI_lld_setModeBits                        
+7000ee55  OSPI_phyReadAttackVector                    
+7000ee63  OSPI_phyTuneDDR                             
+7000ee71  Pinmux_init                                 
+7000ee7f  PowerClock_init                             
+7000ee8d  ClockP_getTicks                             
+7000ee99  DebugP_uartSetDrvIndex                      
+7000eea5  I2C_Transaction_init                        
+7000eeb1  OSPI_clearDualOpCodeMode                    
+7000eebd  OSPI_enableModeBitsCmd                      
+7000eec9  OSPI_enableModeBitsRead                     
+7000eed5  OSPI_lld_getFlashDataBaseAddr               
+7000eee1  OSPI_setCmdDummyCycles                      
+7000eeed  OSPI_setCmdExtType                          
+7000eef9  OSPI_setDeviceSize                          
+7000ef05  OSPI_setModeBits                            
+7000ef11  OSPI_setNumAddrBytes                        
+7000ef1d  OSPI_setPhyEnableSuccess                    
+7000ef29  OSPI_setProtocol                            
+7000ef35  OSPI_setReadDummyCycles                     
+7000ef41  OSPI_setXferOpCodes                         
+7000ef4d  TCA6416_Params_init                         
+7000ef59  TCA6424_Params_init                         
+7000ef64  __aeabi_errno_addr                          
+7000ef70  __aeabi_memclr                              
+7000ef70  __aeabi_memclr4                             
+7000ef70  __aeabi_memclr8                             
+7000ef7c  malloc                                      
+7000ef88  CSL_armR5ReadMpidrReg                       
+7000ef95  ClockP_Params_init                          
+7000efad  ClockP_isActive                             
+7000efcb  TimerP_getReloadCountPriv                   
+7000efd5  TimerP_startPriv                            
+7000efdf  UART_lld_Transaction_deInit                 
+7000efe9  Bootloader_Uniflash_RPRC_flashXIPFile       
+7000eff0  C$$EXIT                                     
+7000eff0  HOSTexit                                    
+7000eff9  OSPI_ReadCmdParams_init                     
+7000f001  OSPI_Transaction_init                       
+7000f009  OSPI_WriteCmdParams_init                    
+7000f011  OSPI_isDmaInterruptEnabled                  
+7000f019  OSPI_lld_readCompleteCallback               
+7000f021  TimerP_clearOverflowIntPriv                 
+7000f030  abort                                       
+7000f039  OSPI_lld_isDacEnable                        
+7000f03f  OSPI_lld_isPhyEnable                        
+7000f045  OSPI_lld_setCmdExtType                      
+7000f04b  OSPI_lld_setPhyEnableSuccess                
+7000f051  SOC_moduleClockEnable                       
+7000f057  ClockP_timerClearOverflowInt                
+7000f05b  OSPI_phyGetTuningData                       
+7000f05f  TimerP_Params_init                          
+7000f063  TimerP_clearOverflowInt                     
+7000f067  TimerP_getCount                             
+7000f06b  TimerP_getReloadCount                       
+7000f06f  TimerP_setup                                
+7000f073  TimerP_start                                
+7000f078  __aeabi_idiv0                               
+7000f07c  __aeabi_ldiv0                               
+7000f080  __aeabi_memcpy                              
+7000f080  __aeabi_memcpy4                             
+7000f080  __aeabi_memcpy8                             
+7000f084  _nop                                        
+7000f088  fseek                                       
+7000f08c  ftell                                       
+7000f090  remove                                      
+7000f0c1  HwiP_enableInt                              
+7000f0e9  HwiP_disableInt                             
+7000f11b  HwiP_restoreInt                             
+7000f171  HwiP_clearInt                               
+7000f191  HwiP_post                                   
+7000f1b9  HwiP_Params_init                            
+7000f1cb  HwiP_construct                              
+7000f30f  HwiP_destruct                               
+7000f3e1  HwiP_init                                   
+7000f4a9  HwiP_inISR                                  
+7000f4c5  HwiP_setVimIrqPriMaskNonAtomic              
+7000f4ef  HwiP_setVimIrqPriMaskAtomic                 
+7000f543  HwiP_restoreVimIrqPriMask                   
+7000f563  HwiP_irq_handler_c                          
+7000f5ff  HwiP_fiq_handler                            
+7000f6af  HwiP_reserved_handler                       
+7000f6dd  HwiP_undefined_handler_c                    
+7000f6fb  HwiP_user_undefined_handler_c               
+7000f70f  HwiP_svc_handler                            
+7000f73d  HwiP_prefetch_abort_handler_c               
+7000f7b7  HwiP_user_prefetch_abort_handler_c          
+7000f7c7  HwiP_data_abort_handler_c                   
+7000f847  HwiP_user_data_abort_handler_c              
+7000f858  HwiP_irq_handler                            
+7000f8cc  HwiP_data_abort_handler                     
+7000f910  HwiP_prefetch_abort_handler                 
+7000f95c  HwiP_undefined_handler                      
+7000f98c  GET_DFSR                                    
+7000f994  GET_ADFSR                                   
+7000f99c  GET_DFAR                                    
+7000f9a4  GET_IFSR                                    
+7000f9ac  GET_AIFSR                                   
+7000f9b4  GET_IFAR                                    
+7000f9bc  GET_SPSR                                    
+7000f9d4  HwiP_disable                                
+7000f9e4  HwiP_disableFIQ                             
+7000f9f4  HwiP_enable                                 
+7000fa04  HwiP_enableFIQ                              
+7000fa14  HwiP_restore                                
+7000fa1c  HwiP_enableVIC                              
+7000fa2c  HwiP_disableVIC                             
+7000fa3c  HwiP_getCPSR                                
+7000fa50  CacheP_disableL1d                           
+7000fa78  CacheP_disableL1p                           
+7000fa90  CacheP_enableL1d                            
+7000faa8  CacheP_enableL1p                            
+7000fac0  CacheP_invL1d                               
+7000faf8  CacheP_invL1p                               
+7000fb34  CacheP_invL1dAll                            
+7000fb3c  CacheP_invL1pAll                            
+7000fb44  CacheP_wb                                   
+7000fb80  CacheP_wbInv                                
+7000fbbc  CacheP_wbAll                                
+7000fc64  CacheP_wbInvAll                             
+7000fc7c  CacheP_wbInvAllAsm                          
+7000fd1c  CacheP_getEnabled                           
+7000fd54  CacheP_getCacheLevelInfo                    
+7000fd60  CacheP_configForceWrThru                    
+7000fd80  CacheP_setDLFO                              
+7000fd91  CacheP_init                                 
+7000fde9  CacheP_disable                              
+7000fe23  CacheP_enable                               
+7000fe43  CacheP_inv                                  
+7000fe81  MpuP_getAttrs                               
+7000fec1  MpuP_RegionAttrs_init                       
+7000fecf  MpuP_setRegion                              
+7000ff49  MpuP_isEnable                               
+7000ff4d  MpuP_disable                                
+7000ff7f  MpuP_enable                                 
+7000ffbb  MpuP_init                                   
+7001001d  MpuP_isUserAuthorizedToAccessMemory         
+70010084  MpuP_disableAsm                             
+7001009c  MpuP_disableBRAsm                           
+700100ac  MpuP_enableAsm                              
+700100c4  MpuP_enableBRAsm                            
+700100d4  MpuP_isEnableAsm                            
+700100e8  MpuP_setRegionAsm                           
+70010110  _c_int00_sbl                                
+70010134  _c_int00                                    
+70010255  _DebugP_assertNoLog                         
+70010273  _system_pre_init                            
+7001028f  __mpu_init                                  
+700102a0  gMainMenu                                   
+700102a0  gUartDmaHandle                              
+700103be  isMapAvailable                              
+700103c0  _ftable                                     
+70010674  gFlashDevCfg_IS25LX256                      
+70010778  _device                                     
+700107f0  gUartParams                                 
+70010848  _stream                                     
+70010898  gFlashAttrs_IS25LX256                       
+70010900  gSocModulesClockFrequency                   
+70010930  gFlashNorOspiFxns                           
+70010958  gFlashToSpiProtocolMap                      
+7001097c  gFlashConfig                                
+70010998  gClockConfig                                
+700109b0  gI2cParams                                  
+70010a1c  gEepromFxns_CAT24M                          
+70010a2c  gI2cConfig                                  
+70010a3c  gSocModules                                 
+70010a4c  __TI_ft_end                                 
+70010a50  gAddrTranslateConfig                        
+70010a5c  gEepromAttrs_CAT24M                         
+70010a68  gEepromConfig                               
+70010a74  __TI_cleanup_ptr                            
+70010a78  __TI_dtors_ptr                              
+70010a7c  gEdmaConfig                                 
+70010a84  gEdmaParams                                 
+70010a8c  gEepromParams                               
+70010a94  gFlashParams                                
+70010a9c  gOspiConfig                                 
+70010aac  gUartConfig                                 
+70010ab4  __aeabi_errno                               
+70010ab8  _lock                                       
+70010abc  _unlock                                     
+70010ac0  gDebugLogZone                               
+70010ac4  gDebugP_uartDrvIndex                        
+70010ac8  gEdmaConfigNum                              
+70010acc  gEepromConfigNum                            
+70010ad0  gFlashConfigNum                             
+70010ad4  gHwiConfig                                  
+70010ad8  gI2cConfigNum                               
+70010adc  gOspiConfigNum                              
+70010ae0  gOspiDmaConfig                              
+70010ae4  gOspiParams                                 
+70010ae8  gUartConfigNum                              
+70010aec  gUartDmaChConfig                            
+70010b00  __aeabi_ctype_table_                        
+70010b00  __aeabi_ctype_table_C                       
+70010c04  gCacheConfig                                
+70010c0c  gMpuConfig                                  
+70010c18  gMpuRegionConfig                            
+70010e58  gADPLLJConfigTbl                            
+70011334  gCacheL1dCacheLineSize                      
+70011338  I2C_defaultTransaction                      
+70011878  I2C_lld_defaultMessage                      
+700118f0  gPeripheralClkSrcInfoMap                    
+70011d38  gCacheL1pCacheLineSize                      
+70011d80  __BSS_START                                 
+70011d80  gVerifyBuf                                  
+70019d80  gHwiCtrl                                    
+7001abe0  gEepromObject_CAT24M                        
+7001ad04  _CIOBUF_                                    
+7001ad04  __CIOBUF_                                   
+7001aed4  __TI_tmpnams                                
+7001af74  gOspiEdmaArgs                               
+7001afb0  gClockCtrl                                  
+7001afd0  gFlashObject_IS25LX256                      
+7001aff4  virtToPhymap                                
+7001b004  parmbuf                                     
+7001b00c  gI2cHandle                                  
+7001b014  gEdmaHandle                                 
+7001b018  gEepromHandle                               
+7001b01c  gFlashHandle                                
+7001b020  gOspiHandle                                 
+7001b024  gUartHandle                                 
+7001b080  __BSS_END                                   
+7001b080  _sys_memory                                 
+70023080  __stack                                     
+70027080  __IRQ_STACK_START                           
+70027080  __STACK_END                                 
+70028080  __FIQ_STACK_START                           
+70028080  __IRQ_STACK_END                             
+70028180  __FIQ_STACK_END                             
+70028180  __SVC_STACK_START                           
+70029180  __ABORT_STACK_START                         
+70029180  __SVC_STACK_END                             
+70029280  __ABORT_STACK_END                           
+70029280  __UNDEFINED_STACK_START                     
+70029380  __UNDEFINED_STACK_END                       
+700c0000  gFileBuf                                    
+ffffffff  __TI_pprof_out_hndl                         
+ffffffff  __TI_prof_data_size                         
+ffffffff  __TI_prof_data_start                        
+ffffffff  __binit__                                   
+ffffffff  binit                                       
+UNDEFED   __TI_CINIT_Base                             
+UNDEFED   __TI_CINIT_Limit                            
+UNDEFED   __TI_Handler_Table_Base                     
+UNDEFED   __TI_Handler_Table_Limit                    
+UNDEFED   _system_post_cinit                          
+
+[562 symbols]
