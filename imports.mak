@@ -38,7 +38,7 @@ else
 endif
 
 CGT_TI_PRU_PATH=$(TOOLS_PATH)/ti-cgt-pru_2.3.3
-CGT_TI_ARM_CLANG_PATH=$(CCS_PATH)/tools/compiler/ti-cgt-armllvm_4.0.4.LTS
+CGT_TI_ARM_CLANG_PATH?=$(CCS_PATH)/tools/compiler/ti-cgt-armllvm_4.0.4.LTS
 ifeq ($(wildcard $(CGT_TI_ARM_CLANG_PATH)),)
     CGT_TI_ARM_CLANG_PATH=$(TOOLS_PATH)/ti-cgt-armllvm_4.0.4.LTS
 endif
