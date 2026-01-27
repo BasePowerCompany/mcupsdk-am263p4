@@ -2901,30 +2901,48 @@ void SOC_rcmMemInitMailboxMemory(void)
     while (CSL_FEXT(mssCtrl->MAILBOXRAM_MEM_INIT_DONE, MSS_CTRL_MAILBOXRAM_MEM_INIT_DONE_MEM0_DONE) != 1);
 }
 
-void SOC_rcmMemInitL2Memory(void)
-{
+void SOC_rcmMemInitL2MemoryBank2(void) {
     CSL_mss_ctrlRegs *mssCtrl = SOC_rcmGetBaseAddressMSSCTRL();
 
     /* MemInit for L2-Bank2 */
     CSL_FINS(mssCtrl->L2IOCRAM_MEM_INIT, MSS_CTRL_L2IOCRAM_MEM_INIT_PARTITION2, 1);
     while (CSL_FEXT(mssCtrl->L2OCRAM_MEM_INIT_DONE, MSS_CTRL_L2OCRAM_MEM_INIT_DONE_PARTITION2) != 1);
     CSL_FINS(mssCtrl->L2OCRAM_MEM_INIT_DONE, MSS_CTRL_L2OCRAM_MEM_INIT_DONE_PARTITION2, 1);
+}
+
+void SOC_rcmMemInitL2MemoryBank3(void) {
+    CSL_mss_ctrlRegs *mssCtrl = SOC_rcmGetBaseAddressMSSCTRL();
 
     /* MemInit for L2-Bank3 */
     CSL_FINS(mssCtrl->L2IOCRAM_MEM_INIT, MSS_CTRL_L2IOCRAM_MEM_INIT_PARTITION3, 1);
     while (CSL_FEXT(mssCtrl->L2OCRAM_MEM_INIT_DONE, MSS_CTRL_L2OCRAM_MEM_INIT_DONE_PARTITION3) != 1);
     CSL_FINS(mssCtrl->L2OCRAM_MEM_INIT_DONE, MSS_CTRL_L2OCRAM_MEM_INIT_DONE_PARTITION3, 1);
+}
+
+void SOC_rcmMemInitL2MemoryBank4(void) {
+   CSL_mss_ctrlRegs *mssCtrl = SOC_rcmGetBaseAddressMSSCTRL();
 
     /* MemInit for L2-Bank4 */
     CSL_FINS(mssCtrl->L2IOCRAM_MEM_INIT, MSS_CTRL_L2IOCRAM_MEM_INIT_PARTITION4, 1);
     while (CSL_FEXT(mssCtrl->L2OCRAM_MEM_INIT_DONE, MSS_CTRL_L2OCRAM_MEM_INIT_DONE_PARTITION4) != 1);
     CSL_FINS(mssCtrl->L2OCRAM_MEM_INIT_DONE, MSS_CTRL_L2OCRAM_MEM_INIT_DONE_PARTITION4, 1);
+}
+
+void SOC_rcmMemInitL2MemoryBank5(void) {
+    CSL_mss_ctrlRegs *mssCtrl = SOC_rcmGetBaseAddressMSSCTRL();
 
     /* MemInit for L2-Bank5 */
     CSL_FINS(mssCtrl->L2IOCRAM_MEM_INIT, MSS_CTRL_L2IOCRAM_MEM_INIT_PARTITION5, 1);
     while (CSL_FEXT(mssCtrl->L2OCRAM_MEM_INIT_DONE, MSS_CTRL_L2OCRAM_MEM_INIT_DONE_PARTITION5) != 1);
     CSL_FINS(mssCtrl->L2OCRAM_MEM_INIT_DONE, MSS_CTRL_L2OCRAM_MEM_INIT_DONE_PARTITION5, 1);
+}
 
+void SOC_rcmMemInitL2Memory(void)
+{
+    SOC_rcmMemInitL2MemoryBank2();
+    SOC_rcmMemInitL2MemoryBank3();
+    SOC_rcmMemInitL2MemoryBank4();
+    SOC_rcmMemInitL2MemoryBank5();
 }
 
 void SOC_rcmCoreR5FUnhalt(uint32_t cpuId)

@@ -893,6 +893,26 @@ void SOC_configureWarmResetInputRiseDelay(uint16_t inpRiseDelayValue);
  */
 void SOC_configureWarmResetInputFallDelay(uint16_t inpFallDelayValue);
 
+/**
+ *  \brief Start memory initialization for L2 Bank2
+ */
+void SOC_rcmMemInitL2MemoryBank2(void);
+
+/**
+ *  \brief Start memory initialization for L2 Bank3
+ */
+void SOC_rcmMemInitL2MemoryBank3(void);
+
+/**
+ *  \brief Start memory initialization for L2 Bank4
+ */
+void SOC_rcmMemInitL2MemoryBank4(void);
+
+/**
+ *  \brief Start memory initialization for L2 Bank5
+ */
+void SOC_rcmMemInitL2MemoryBank5(void);
+
 /** @} */
 
 #ifdef __cplusplus
