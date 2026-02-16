@@ -97,7 +97,7 @@ int32_t SDL_ECC_BUS_SAFETY_MSS_getRegOffset(uint32_t busSftyNode , SDL_ECC_BUS_S
 * \return  READABLE_NODE if busSftyNode is readable.
 *          NOT_READABLE_NODE if it is not readable.
 */
-static uint32_t SDL_ECC_BUS_SAFETY_MSS_isReadableNode(uint32_t busSftyNode);
+uint32_t SDL_ECC_BUS_SAFETY_MSS_isReadableNode(uint32_t busSftyNode);
 
 /* ========================================================================== */
 
@@ -441,7 +441,7 @@ void SDL_ECC_BUS_SAFETY_MSS_busSftyFitypeSet(SDL_ECC_BUS_SAFETY_busSftyFiType fi
     }
 }
 
-static uint32_t SDL_ECC_BUS_SAFETY_MSS_isReadableNode(uint32_t busSftyNode)
+uint32_t SDL_ECC_BUS_SAFETY_MSS_isReadableNode(uint32_t busSftyNode)
 {
     uint32_t checkNode = 0U;
     uint32_t testNode = 0U;
