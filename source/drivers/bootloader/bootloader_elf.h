@@ -66,8 +66,8 @@ extern "C"
 #define ELF_P_HEADER_64_SIZE      (56U)
 
 #define ELF_HEADER_MAX_SIZE       (ELF_HEADER_64_SIZE)
-#define ELF_MAX_SEGMENTS          (1024U)
-#define ELF_P_HEADER_MAX_SIZE     (ELF_P_HEADER_64_SIZE)
+#define ELF_MAX_SEGMENTS          (24U)
+#define ELF_P_HEADER_MAX_SIZE     (ELF_P_HEADER_32_SIZE)
 #define ELF_NOTE_SEGMENT_MAX_SIZE (512U)
 
 #define NOTE_OTFA_CONFIG_OTFA_MODE_AUTH         (0U)
