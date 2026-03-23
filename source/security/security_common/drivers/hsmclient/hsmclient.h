@@ -427,7 +427,7 @@ typedef struct FlashBankCopy_t_
      * De initialize the HSM client for current core.
      *
      */
-    void HsmClient_deInit(void);
+    void HsmClient_deinit(void);
 
 /**
  * @brief
