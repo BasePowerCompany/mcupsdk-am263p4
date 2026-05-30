@@ -109,6 +109,8 @@ extern "C"
 #define HSM_MSG_PROC_AUTH_BOOT_SEC_CFG           (0x9058)
 /** @brief Copy active flash bank contents to dormant flash bank*/
 #define HSM_MSG_FLASH_BANK_COPY                  (0x9059)
+/** @brief Get customer HRoT SMPK and BMPK public key hashes from secmgr*/
+#define HSM_MSG_GET_KEY_HASHES                   (0x905A)
 
 /* message flags */
 

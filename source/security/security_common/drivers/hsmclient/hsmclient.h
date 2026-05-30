@@ -398,6 +398,21 @@ typedef struct FlashBankCopy_t_
     uint8_t cpuFlashBankType;  /** CPU for which this service is invoked */
 } FlashBankCopy_t;
 
+/**
+ * @brief
+ * Customer HRoT key hash payload returned by HsmClient_getKeyHashes().
+ * Each hash is 64 bytes = SHA-512(public key), read from secmgr device-key
+ * registers (Part 1 + Part 2 concatenated).
+ *
+ * @param smpkHash  SMPK1 (32 bytes) || SMPK2 (32 bytes)
+ * @param bmpkHash  BMPK1 (32 bytes) || BMPK2 (32 bytes)
+ */
+typedef struct HsmKeyHashes_t_
+{
+    uint8_t smpkHash[64];  /**< SMPK1 || SMPK2 */
+    uint8_t bmpkHash[64];  /**< BMPK1 || BMPK2 */
+} HsmKeyHashes_t;
+
     /**
      * @brief
      * This API waits for HSMRT load if requested
@@ -471,6 +486,27 @@ int32_t HsmClient_getVersion(HsmClient_t *HsmClient ,
      */
     int32_t HsmClient_getUID(HsmClient_t *HsmClient,
                              uint8_t *uid, uint32_t timeout);
+
+    /**
+     * @brief
+     *  The service issued to HSM Server which reads the customer HRoT SMPK
+     *  and BMPK public-key hashes from the secmgr device-key registers and
+     *  populates the supplied HsmKeyHashes_t buffer.
+     *  By default the hsm flag is set to HSM_FLAG_AOP for this service.
+     *
+     * @param HsmClient         [IN]  Client object which is using this getKeyHashes API.
+     * @param keyHashes         [OUT] Pointer to caller-owned buffer that will be populated
+     *                                with the SMPK and BMPK hashes.
+     * @param timeout           [IN]  amount of time to block waiting for semaphore
+     *                                to be available, in units of system ticks.
+     *
+     * @return
+     * 1. SystemP_SUCCESS if request gets ACK from HSM server.
+     * 2. SystemP_FAILURE if request gets NACK from HSM server or args integrity check fails.
+     * 3. SystemP_TIMEOUT if timeout exception occurs.
+     */
+    int32_t HsmClient_getKeyHashes(HsmClient_t *HsmClient,
+                                   HsmKeyHashes_t *keyHashes, uint32_t timeout);
 
     /**
      * @brief
