@@ -657,6 +657,64 @@ int32_t HsmClient_getUID(HsmClient_t *HsmClient,
     return status;
 }
 
+int32_t HsmClient_getKeyHashes(HsmClient_t *HsmClient,
+                               HsmKeyHashes_t *keyHashes, uint32_t timeout)
+{
+    int32_t status;
+    uint16_t crcArgs;
+
+    /* populate the send message structure */
+    HsmClient->ReqMsg.destClientId = HSM_CLIENT_ID_1;
+    HsmClient->ReqMsg.srcClientId  = HsmClient->ClientId;
+
+    /* Always expect acknowledgement from HSM server */
+    HsmClient->ReqMsg.flags   = HSM_FLAG_AOP;
+    HsmClient->ReqMsg.serType = HSM_MSG_GET_KEY_HASHES;
+
+    /* Arg CRC over the caller's empty/initial buffer */
+    HsmClient->ReqMsg.crcArgs = crc16_ccit((uint8_t *)keyHashes, sizeof(HsmKeyHashes_t));
+
+    /* Pass physical address; HSM core sees the SoC view */
+    HsmClient->ReqMsg.args = (void *)(uintptr_t)SOC_virtToPhy(keyHashes);
+
+    /* Write back and invalidate the cache before passing the buffer to HSM */
+    CacheP_wbInv(keyHashes, GET_CACHE_ALIGNED_SIZE(sizeof(HsmKeyHashes_t)), CacheP_TYPE_ALL);
+
+    status = HsmClient_SendAndRecv(HsmClient, timeout);
+    if (status == SystemP_SUCCESS)
+    {
+        if (HsmClient->RespFlag == HSM_FLAG_NACK)
+        {
+            DebugP_log("\r\n [HSM_CLIENT] Get Key Hashes request NACKed by HSM server\r\n");
+            status = SystemP_FAILURE;
+        }
+        else
+        {
+            HsmClient->RespMsg.args = (void *)SOC_phyToVirt((uint64_t)HsmClient->RespMsg.args);
+
+            crcArgs = crc16_ccit((uint8_t *)HsmClient->RespMsg.args, sizeof(HsmKeyHashes_t));
+            if (crcArgs == HsmClient->RespMsg.crcArgs)
+            {
+                status = SystemP_SUCCESS;
+            }
+            else
+            {
+                DebugP_log("\r\n [HSM_CLIENT] CRC check for getKeyHashes response failed \r\n");
+                status = SystemP_FAILURE;
+            }
+        }
+    }
+    else if (status == SystemP_FAILURE)
+    {
+        status = SystemP_FAILURE;
+    }
+    else
+    {
+        status = SystemP_TIMEOUT;
+    }
+    return status;
+}
+
 int32_t HsmClient_openDbgFirewall(HsmClient_t *HsmClient,
                                   uint8_t *cert,
                                   uint32_t cert_size,
