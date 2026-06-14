@@ -402,15 +402,22 @@ typedef struct FlashBankCopy_t_
  * @brief
  * Customer HRoT key hash payload returned by HsmClient_getKeyHashes().
  * Each hash is 64 bytes = SHA-512(public key), read from secmgr device-key
- * registers (Part 1 + Part 2 concatenated).
+ * registers (Part 1 + Part 2 concatenated). activeKey is derived from
+ * SecMgr_getKeyRevision and indicates which key family is currently the
+ * Hardware Root of Trust.
  *
- * @param smpkHash  SMPK1 (32 bytes) || SMPK2 (32 bytes)
- * @param bmpkHash  BMPK1 (32 bytes) || BMPK2 (32 bytes)
+ * @param smpkHash   SMPK1 (32 bytes) || SMPK2 (32 bytes)
+ * @param bmpkHash   BMPK1 (32 bytes) || BMPK2 (32 bytes)
+ * @param activeKey  HSM_KEY_HASHES_ACTIVE_SMPK or HSM_KEY_HASHES_ACTIVE_BMPK
  */
+#define HSM_KEY_HASHES_ACTIVE_SMPK (0U)
+#define HSM_KEY_HASHES_ACTIVE_BMPK (1U)
+
 typedef struct HsmKeyHashes_t_
 {
     uint8_t smpkHash[64];  /**< SMPK1 || SMPK2 */
     uint8_t bmpkHash[64];  /**< BMPK1 || BMPK2 */
+    uint8_t activeKey;     /**< HSM_KEY_HASHES_ACTIVE_SMPK or _BMPK */
 } HsmKeyHashes_t;
 
     /**
