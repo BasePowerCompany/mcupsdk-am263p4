@@ -410,14 +410,17 @@ typedef struct FlashBankCopy_t_
  * @param bmpkHash   BMPK1 (32 bytes) || BMPK2 (32 bytes)
  * @param activeKey  HSM_KEY_HASHES_ACTIVE_SMPK or HSM_KEY_HASHES_ACTIVE_BMPK
  */
-#define HSM_KEY_HASHES_ACTIVE_SMPK (0U)
-#define HSM_KEY_HASHES_ACTIVE_BMPK (1U)
+typedef enum HsmKeyHashes_ActiveKey_e
+{
+    HSM_KEY_HASHES_ACTIVE_SMPK = 0,
+    HSM_KEY_HASHES_ACTIVE_BMPK = 1,
+} HsmKeyHashes_ActiveKey_t;
 
 typedef struct HsmKeyHashes_t_
 {
-    uint8_t smpkHash[64];  /**< SMPK1 || SMPK2 */
-    uint8_t bmpkHash[64];  /**< BMPK1 || BMPK2 */
-    uint8_t activeKey;     /**< HSM_KEY_HASHES_ACTIVE_SMPK or _BMPK */
+    uint8_t                  smpkHash[64];  /**< SMPK1 || SMPK2 */
+    uint8_t                  bmpkHash[64];  /**< BMPK1 || BMPK2 */
+    HsmKeyHashes_ActiveKey_t activeKey;
 } HsmKeyHashes_t;
 
     /**
