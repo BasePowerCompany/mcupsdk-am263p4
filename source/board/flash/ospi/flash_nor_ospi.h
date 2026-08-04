@@ -71,6 +71,10 @@ typedef struct {
 /* Flash specific externs */
 extern Flash_Fxns gFlashNorOspiFxns;
 
+/* Called repeatedly while the driver busy-waits for a flash erase/write to
+ * complete. */
+void Flash_norOspiServiceWatchdog(void);
+
 
 #ifdef __cplusplus
 }

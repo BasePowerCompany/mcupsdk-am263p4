@@ -36,6 +36,11 @@
 #define FLASH_OSPI_JEDEC_ID_SIZE_MAX (8U)
 #define FLASH_OSPI_TRY_TUNING        (3U)
 
+/* Weak no-op default. */
+void __attribute__((weak)) Flash_norOspiServiceWatchdog(void)
+{
+}
+
 static int32_t Flash_norOspiErase(Flash_Config *config, uint32_t blkNum);
 static int32_t Flash_norOspiEraseSector(Flash_Config *config, uint32_t sectNum);
 static int32_t Flash_norOspiRead(Flash_Config *config, uint32_t offset, uint8_t *buf, uint32_t len);
@@ -154,6 +159,7 @@ static int32_t Flash_norOspiWaitReady(Flash_Config *config, uint32_t timeOut)
 
     while((status != SystemP_SUCCESS) || (timeOut > 0))
     {
+        Flash_norOspiServiceWatchdog();
         status = Flash_norOspiCmdRead(config, cmd, cmdAddr, numAddrBytes, dummyBits, readStatus, numBytesToRead);
         if((status == SystemP_SUCCESS) && ((readStatus[0] & bitMask) == 0))
         {
