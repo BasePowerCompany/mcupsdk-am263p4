@@ -416,11 +416,23 @@ typedef enum HsmKeyHashes_ActiveKey_e
     HSM_KEY_HASHES_ACTIVE_BMPK = 1,
 } HsmKeyHashes_ActiveKey_t;
 
+#define HSM_KEY_HASHES_APP_HASH_LEN 32U
+#define HSM_KEY_HASHES_MAX_APP_KEYS 10U
+
+/* keyId is the keyring slot the app boot cert's sign_key_id must name. */
+typedef struct HsmAppKeyHash_t_
+{
+    uint32_t keyId;
+    uint8_t  hash[HSM_KEY_HASHES_APP_HASH_LEN];
+} HsmAppKeyHash_t;
+
 typedef struct HsmKeyHashes_t_
 {
     uint8_t                  smpkHash[64];  /**< SMPK1 || SMPK2 */
     uint8_t                  bmpkHash[64];  /**< BMPK1 || BMPK2 */
     HsmKeyHashes_ActiveKey_t activeKey;
+    uint32_t                 appKeyCount;
+    HsmAppKeyHash_t          appKeys[HSM_KEY_HASHES_MAX_APP_KEYS];
 } HsmKeyHashes_t;
 
     /**
