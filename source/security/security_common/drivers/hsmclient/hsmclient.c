@@ -277,6 +277,7 @@ static int32_t HsmClient_waitForAllResponses()
 {
     while ((gSecureBootStatus == SystemP_SUCCESS) && (gNum_HsmResponseReceived < gNum_HsmRequestSent))
     {
+        HsmClient_serviceWatchdog();
     }
 
     return gSecureBootStatus;
@@ -1841,8 +1842,8 @@ int32_t HsmClient_getRandomNum(HsmClient_t *HsmClient,
 
             ((RNGReq_t *)HsmClient->RespMsg.args)->resultPtr = (uint8_t *)SOC_phyToVirt((uint64_t)(((RNGReq_t *)HsmClient->RespMsg.args)->resultPtr));
             ((RNGReq_t *)HsmClient->RespMsg.args)->seedValue = (uint32_t *)SOC_phyToVirt((uint64_t)(((RNGReq_t *)HsmClient->RespMsg.args)->seedValue));
-            CacheP_inv((void *)((RNGReq_t *)HsmClient->RespMsg.args)->resultPtr, GET_CACHE_ALIGNED_SIZE(((uint32_t)*(((RNGReq_t *)HsmClient->RespMsg.args)->resultPtr))), CacheP_TYPE_ALL);
-            CacheP_inv((void *)((RNGReq_t *)HsmClient->RespMsg.args)->seedValue, GET_CACHE_ALIGNED_SIZE(((uint32_t)*(((RNGReq_t *)HsmClient->RespMsg.args)->seedValue))), CacheP_TYPE_ALL);
+            CacheP_inv((void *)((RNGReq_t *)HsmClient->RespMsg.args)->resultPtr, GET_CACHE_ALIGNED_SIZE(((RNGReq_t *)HsmClient->RespMsg.args)->resultLength), CacheP_TYPE_ALL);
+            CacheP_inv((void *)((RNGReq_t *)HsmClient->RespMsg.args)->seedValue, GET_CACHE_ALIGNED_SIZE((((RNGReq_t *)HsmClient->RespMsg.args)->seedSizeInDWords) * 4), CacheP_TYPE_ALL);
 
             if (crcArgs == HsmClient->RespMsg.crcArgs)
             {

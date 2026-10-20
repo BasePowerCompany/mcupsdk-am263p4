@@ -1046,6 +1046,8 @@ int32_t HsmClient_activeToDormantBankCopy(HsmClient_t *HsmClient,
                                           FlashBankCopy_t *pFlashBankCopyObject, 
                                           uint32_t timeout);
 
+void HsmClient_serviceWatchdog(void);
+
 /** @} */
 
 #ifdef __cplusplus
