@@ -193,7 +193,7 @@ void MPU_SECTION MpuP_init(void)
 
     MpuP_disableBRAsm();
 
-    DebugP_assertNoLog( gMpuConfig.numRegions < MpuP_MAX_REGIONS);
+    DebugP_assertNoLog( gMpuConfig.numRegions <= MpuP_MAX_REGIONS);
 
     /*
      * Initialize MPU regions
